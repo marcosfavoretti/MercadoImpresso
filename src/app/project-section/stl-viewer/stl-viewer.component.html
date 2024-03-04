@@ -1,2 +1,16 @@
-<div #rendererContainer></div>
-<input type="file" (change)="onFileSelected($event)">
+<div #rendererContainer id="render-canva" (mouseenter)="Setpause()" (mouseleave)="Setpause()">
+    <div id="controll-animation-canva">
+        <div *ngIf="animation_controll.isPause" id="play" (click)="setGlobalPause()"></div>
+        <div id="pause" *ngIf="!animation_controll.isPause" (click)="setGlobalPause()"></div>
+    </div>
+
+</div>
+<p-fileUpload mode="basic" chooseLabel="Choose" url="https://www.primefaces.org/cdn/api/upload.php"
+    (onUpload)="onUpload($event)" [multiple]="false" [auto]="true">
+    <ng-template pTemplate="content">
+        <ul *ngIf="file">
+            <li>{{file.name }} - {{ file.size }} bytes</li>
+        </ul>
+    </ng-template>
+</p-fileUpload>
+<!-- <input type="file" (change)="onFileSelected($event)" class="form-control w-75" accept="model/stl"> -->

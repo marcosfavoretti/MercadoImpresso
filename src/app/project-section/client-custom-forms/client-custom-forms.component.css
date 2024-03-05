@@ -1,0 +1,7 @@
+
+.color-label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    font-size: 13px;
+}

@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angula
 import * as THREE from 'three';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 import { OrbitControls } from '@three-ts/orbit-controls'
+import { FileStlHandleService } from '../service/file-stl-handle.service';
 
 @Component({
   selector: 'app-stl-viewer',
@@ -15,12 +16,15 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
   private my_object!: THREE.Mesh;
   private loader = new STLLoader();
   controls!: OrbitControls; // Declarar variável para os controles da câmera
-  file: any
   animation_controll = {
     isPause: false,
     current_Pause: false
   }
+  file: any
   @ViewChild('rendererContainer') rendererContainer!: ElementRef; // Referência ao contêiner do renderizador
+
+  constructor(private file_service : FileStlHandleService){}
+
 
   ngAfterViewInit(): void {
     this.initializeScene();
@@ -64,8 +68,8 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
 
   animation() {
     if (!this.animation_controll.current_Pause && !this.animation_controll.isPause) {
-      this.my_object.rotation.x += 0.02
-      this.my_object.rotation.y += 0.03
+      // this.my_object.rotation.x += 0.01
+      this.my_object.rotation.y += 0.01
     }
     requestAnimationFrame(() => this.animation());
 
@@ -87,6 +91,7 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
     const file = event.files[0];
     console.log(file)
     if (file) {
+      this.file_service.setCurrentFile(file) 
       this.file = file
       this.loader.load(URL.createObjectURL(file), (geometry) => {
         // const material = new THREE.MeshBasicMaterial(); // vermelho

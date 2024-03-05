@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 import { AppComponent } from './app.component';
 import { ProjectSectionComponent } from './project-section/project-section.component';
@@ -11,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClientCustomFormsComponent } from './project-section/client-custom-forms/client-custom-forms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SliderModule } from 'primeng/slider';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ClientCustomFormsComponent
   ],
   imports: [
+    FormsModule,
+    SliderModule,
+    RadioButtonModule,
     ButtonModule,
     InputTextModule,
     FileUploadModule,

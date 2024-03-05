@@ -5,12 +5,13 @@
     </div>
 
 </div>
-<p-fileUpload mode="basic" chooseLabel="Choose" url="https://www.primefaces.org/cdn/api/upload.php"
-    (onUpload)="onUpload($event)" [multiple]="false" [auto]="true">
-    <ng-template pTemplate="content">
-        <ul *ngIf="file">
-            <li>{{file.name }} - {{ file.size }} bytes</li>
-        </ul>
-    </ng-template>
-</p-fileUpload>
+<div style="position: absolute; width: 100%; height: 11%;">
+    <p-fileUpload *ngIf="!file?.name" mode="basic" [chooseLabel]="'Choose'" url="https://www.primefaces.org/cdn/api/upload.php"
+        (onUpload)="onUpload($event)" [multiple]="false" [auto]="true" >
+    </p-fileUpload>
+    <div *ngIf="file?.name" style="top: 0 ;position: absolute;background-color: purple; width: 50%; height: 100%; border-radius: 3px; display: flex; align-items: center; justify-content: center;">
+        <span style="color: white; text-align: center;">{{file?.name ?? "teste"}}</span>
+        <div id="remove" class="pi pi-trash" style="color: white"></div>
+    </div>
+</div>
 <!-- <input type="file" (change)="onFileSelected($event)" class="form-control w-75" accept="model/stl"> -->

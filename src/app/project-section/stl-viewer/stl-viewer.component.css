@@ -10,7 +10,12 @@
     aspect-ratio: 1/1;
     cursor: pointer;
 }
-
+#remove{
+    background-color: red;
+    width: 10%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
 #play {
     position: absolute;
     width: 100%;

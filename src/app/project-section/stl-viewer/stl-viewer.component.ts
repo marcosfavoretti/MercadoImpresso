@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, EventEmitter } from '@angular/core';
 import * as THREE from 'three';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 import { OrbitControls } from '@three-ts/orbit-controls'
@@ -15,54 +15,88 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
   private renderer!: THREE.WebGLRenderer;
   private my_object!: THREE.Mesh;
   private loader = new STLLoader();
-  controls!: OrbitControls; // Declarar variável para os controles da câmera
+  private controls!: OrbitControls; // Declarar variável para os controles da câmera
   animation_controll = {
     isPause: false,
     current_Pause: false
   }
+  subscription!: EventEmitter<any>
   file: any
   @ViewChild('rendererContainer') rendererContainer!: ElementRef; // Referência ao contêiner do renderizador
 
-  constructor(private file_service : FileStlHandleService){}
+  constructor(private file_service: FileStlHandleService) { }
 
+  ngOnInit(): void {
+    this.file_service.makeSubscription().subscribe(
+      (newValue) => {
+        this.file = newValue
+      }
+    )
+    this.file_service.makeColorSubscription().subscribe(
+      newColor => {
+        console.log(newColor.rgb)
+        this.changeColor(new THREE.Color(`rgb(${newColor.rgb.r}, ${newColor.rgb.g}, ${newColor.rgb.b})`))
+      }
+    )
+  }
 
   ngAfterViewInit(): void {
     this.initializeScene();
   }
-  ngOnInit(): void {
-    console.log('go')
+
+  changeColor(color: THREE.Color) {
+    console.log('Mudando de cor...');
+
+    if (this.my_object && this.my_object.material) {
+      // Verifica se o material é uma instância de THREE.MeshBasicMaterial
+      if (this.my_object.material instanceof THREE.MeshBasicMaterial) {
+        // Define a nova cor
+        (this.my_object.material as THREE.MeshBasicMaterial).color = color.clone();
+      } else {
+        console.log('O material não é do tipo MeshBasicMaterial.');
+      }
+    } else {
+      console.log('O objeto 3D não está definido.');
+    }
   }
+
+  addModelOnScene(geometry: THREE.BufferGeometry, material: THREE.Material) {
+    console.log(material)
+    this.scene.remove(this.my_object)
+    this.my_object = new THREE.Mesh(geometry, material);
+    this.my_object.scale.set(0.01, 0.01, 0.01);
+    this.scene.add(this.my_object);
+  }
+
+
+  putDefaultObject() {
+    const geometry = new THREE.BoxGeometry(100, 100, 100);
+    const material = new THREE.MeshNormalMaterial({ wireframe: true });
+    this.addModelOnScene(geometry, material)
+  }
+
   initializeScene() {
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    // Inicializar a cena
     this.scene = new THREE.Scene();
 
-    // Inicializar a câmera
     this.camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 10);
     this.camera.position.z = 2;
 
-    // Inicializar o renderizador WebGL
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
     this.renderer.setSize(width / 2, height / 2);
-    // this.renderer.setClearColor(0xffffff); // Definir o fundo como branco
     this.renderer.setClearColor(0x000000); // Definir o fundo como branco
 
     this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
 
-    // Inicializar os controles da câmera (OrbitControls)
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableDamping = true; // Suaviza o movimento da câmera
     this.controls.dampingFactor = 0.25; // Configura a taxa de suavização
 
-    // Inicializar o objeto padrão (quadrado)
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshNormalMaterial();
-    this.my_object = new THREE.Mesh(geometry, material);
-    this.scene.add(this.my_object);
+    this.putDefaultObject()
 
-    // Iniciar a animação
+    //Iniciar a animação
     this.animation();
   }
 
@@ -75,7 +109,6 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
 
     this.controls.update(); // Atualiza os controles da câmera
     this.renderer.render(this.scene, this.camera);
-
   }
 
   Setpause() {
@@ -86,21 +119,23 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
     this.animation_controll.isPause = !this.animation_controll.isPause
   }
 
+  removeFile() {
+    this.file = undefined
+    this.scene.remove(this.my_object)
+    this.file_service.setCurrentFile(undefined)
+    this.putDefaultObject()
+  }
+
   onUpload(event: any) {
-    console.log(event)
     const file = event.files[0];
-    console.log(file)
     if (file) {
-      this.file_service.setCurrentFile(file) 
-      this.file = file
+      this.file_service.setCurrentFile(file)
       this.loader.load(URL.createObjectURL(file), (geometry) => {
         // const material = new THREE.MeshBasicMaterial(); // vermelho
-        const material = new THREE.MeshNormalMaterial
-        const mesh = new THREE.Mesh(geometry, material);
-        mesh.scale.set(0.01, 0.01, 0.01);
+        const material = new THREE.MeshBasicMaterial()
+        //const mesh = new THREE.Mesh(geometry , material);
         this.scene.remove(this.my_object);
-        this.scene.add(mesh);
-        this.my_object = mesh
+        this.addModelOnScene(geometry, material)
         this.animation()
       });
     }

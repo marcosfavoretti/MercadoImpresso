@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { colors } from './colors.list';
 import { FileStlHandleService } from '../service/file-stl-handle.service';
 
@@ -7,14 +7,30 @@ import { FileStlHandleService } from '../service/file-stl-handle.service';
   templateUrl: './client-custom-forms.component.html',
   styleUrls: ['./client-custom-forms.component.css']
 })
-export class ClientCustomFormsComponent {
+export class ClientCustomFormsComponent implements OnInit {
   colors = colors
   sliderValue: any
-  file_name!: string
+  file!: any
+  sliderLayer: any
+  slideInfill: any
+  selectColor?: string
+  constructor(private file_service: FileStlHandleService) { }
 
-  constructor(private file_service: FileStlHandleService){
-    this.file_name = this.file_service.currentFile?.name
+  ngOnInit(): void {
+    this.file_service.makeSubscription().subscribe(
+      (newValue) => {
+        this.file = newValue
+      }
+    )
+
   }
+  setNewColor(color: any) {
+    this.file_service.setCurrentColor(color)
+  }
+  getFileName() {
+    return this.file?.name ?? ""
+  }
+
 
 
 }

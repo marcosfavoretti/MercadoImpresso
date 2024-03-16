@@ -1,7 +1,14 @@
-<div
-    style="background-color: black; height: 100%; width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; overflow: hidden;">
-    <app-stl-viewer class="w-50 h-50" data-aos="fade-right" data-aos-duration="15000"
-        data-aos-easing="linear"></app-stl-viewer>
-    <app-client-custom-forms class="w-50 h-75" data-aos="fade-left" data-aos-duration="15000"
-        data-aos-easing="linear"></app-client-custom-forms>
+
+<div class="container-md w-100 overflow-hidden" style="margin-top: 20vh; margin-bottom: 17vh;">
+    <h1 class="tittle-responsive text-center">Muito Bem!</h1>
+    <h3 class="text-responsive text-center text-secondary">Seu projeto foi carregado e agora você pode aplicar
+        customizações nele!</h3>
+    <div class="row w-100 mt-3" style=" margin-right: 0; margin-left: 0;">
+        <div class="col-md-6 col-sm-12d-flex align-items-center justify-content-center"  data-aos="fade-rigt">
+            <app-stl-viewer></app-stl-viewer>
+        </div>
+        <div class="col-md-6 col-sm-12" data-aos="fade-left">
+            <app-client-custom-forms ></app-client-custom-forms>
+        </div>
+    </div>
 </div>

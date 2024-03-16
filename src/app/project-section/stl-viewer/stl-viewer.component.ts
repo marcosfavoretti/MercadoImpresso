@@ -78,15 +78,23 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
   initializeScene() {
     const width = window.innerWidth;
     const height = window.innerHeight;
-
+    console.log()
     this.scene = new THREE.Scene();
 
     this.camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 10);
     this.camera.position.z = 2;
+    console.log((this.rendererContainer.nativeElement as HTMLElement).offsetWidth)
+    console.log((this.rendererContainer.nativeElement as HTMLElement).offsetHeight)
 
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
-    this.renderer.setSize(width / 2, height / 2);
-    this.renderer.setClearColor(0x000000); // Definir o fundo como branco
+    if(width<768){
+      this.renderer.setSize((this.rendererContainer.nativeElement as HTMLElement).offsetWidth, (this.rendererContainer.nativeElement as HTMLElement).offsetWidth);
+    }
+    else{
+      this.renderer.setSize((this.rendererContainer.nativeElement as HTMLElement).offsetWidth, (this.rendererContainer.nativeElement as HTMLElement).offsetHeight);
+
+    }
+    this.renderer.setClearColor(0xfffffff); // Definir o fundo como branco
 
     this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
 

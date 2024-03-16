@@ -6,15 +6,13 @@ import { ProjectSectionComponent } from './project-section/project-section.compo
 
 const routes: Routes = [
   { path: '', component: ProjectSectionComponent },
-
+  {}
 ];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ],
-
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 

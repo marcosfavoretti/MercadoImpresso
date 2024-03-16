@@ -28,7 +28,7 @@
     position: absolute;
     width: 100%;
     aspect-ratio: 1/1;
-    background: linear-gradient(45deg, white 50%, transparent 50%);
+    background: linear-gradient(45deg, black 50%, transparent 50%);
     transform: rotate(-135deg);
 }
 
@@ -36,5 +36,5 @@
     position: absolute;
     width: 100%;
     aspect-ratio: 1/1;
-    background: linear-gradient(to right, transparent 25%, white 25%, white 50%, transparent 50%, transparent 75%, white 75%, white 100%);
+    background: linear-gradient(to right, transparent 25%, black 25%, black 50%, transparent 50%, transparent 75%, black 75%, black 100%);
 }

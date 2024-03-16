@@ -14,15 +14,27 @@ import { ClientCustomFormsComponent } from './project-section/client-custom-form
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SliderModule } from 'primeng/slider';
 import { FormsModule } from '@angular/forms';
+import { ProjectUploadPageComponent } from './project-upload-page/project-upload-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { ScrollTopModule } from 'primeng/scrolltop';
+import { BadgeModule } from 'primeng/badge';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectSectionComponent,
     StlViewerComponent,
-    ClientCustomFormsComponent
+    ClientCustomFormsComponent,
+    ProjectUploadPageComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
+    FileUploadModule,
+    BadgeModule,
+    ScrollTopModule,
+    AppRoutingModule,
     FormsModule,
     SliderModule,
     RadioButtonModule,

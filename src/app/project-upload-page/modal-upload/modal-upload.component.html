@@ -1,0 +1,10 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title tittle-responsive text-center" id="modal-basic-title">Estamos preparando tudo para você</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+        <span class="text-responsive text-secondary">seu projeto está sendo processado</span>
+        <p-progressBar [value]="progress" styleClass="mt-2"></p-progressBar>
+	</div>
+</ng-template>

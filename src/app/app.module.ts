@@ -4,6 +4,8 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ToastModule } from 'primeng/toast';
 
 import { AppComponent } from './app.component';
 import { ProjectSectionComponent } from './project-section/project-section.component';
@@ -19,6 +21,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { BadgeModule } from 'primeng/badge';
+import { ModalUploadComponent } from './project-upload-page/modal-upload/modal-upload.component';
 
 @NgModule({
   declarations: [
@@ -28,9 +31,12 @@ import { BadgeModule } from 'primeng/badge';
     ClientCustomFormsComponent,
     ProjectUploadPageComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    ModalUploadComponent
   ],
   imports: [
+    ToastModule,
+    ProgressBarModule,
     FileUploadModule,
     BadgeModule,
     ScrollTopModule,

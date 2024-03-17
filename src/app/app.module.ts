@@ -22,6 +22,10 @@ import { FooterComponent } from './footer/footer.component';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { BadgeModule } from 'primeng/badge';
 import { ModalUploadComponent } from './project-upload-page/modal-upload/modal-upload.component';
+import { LandPageComponent } from './land-page/land-page.component';
+import { CarouselMainComponent } from './land-page/carousel-main/carousel-main.component';
+import { SomeProductsGridComponent } from './land-page/some-products-grid/some-products-grid.component';
+import { OrcamentoProjectComponent } from './land-page/orcamento-project/orcamento-project.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { ModalUploadComponent } from './project-upload-page/modal-upload/modal-u
     ProjectUploadPageComponent,
     NavbarComponent,
     FooterComponent,
-    ModalUploadComponent
+    ModalUploadComponent,
+    LandPageComponent,
+    CarouselMainComponent,
+    SomeProductsGridComponent,
+    OrcamentoProjectComponent
   ],
   imports: [
     ToastModule,

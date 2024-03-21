@@ -131,7 +131,7 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
     if (file) {
       this.file_service.setCurrentFile(file)
       this.loader.load(URL.createObjectURL(file), (geometry) => {
-        // const material = new THREE.MeshBasicMaterial(); // vermelho
+        // const material = new THREE.MeshBasicMaterial(); // vermelhoa
         const material = new THREE.MeshBasicMaterial()
         //const mesh = new THREE.Mesh(geometry , material);
         this.scene.remove(this.my_object);

@@ -14,13 +14,15 @@ import { ClientCustomFormsComponent } from './project-section/client-custom-form
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SliderModule } from 'primeng/slider';
 import { FormsModule } from '@angular/forms';
+import { RotesHandleComponent } from './rotes-handle/rotes-handle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectSectionComponent,
     StlViewerComponent,
-    ClientCustomFormsComponent
+    ClientCustomFormsComponent,
+    RotesHandleComponent
   ],
   imports: [
     FormsModule,

@@ -1,20 +1,24 @@
-<h1 class="text-white">Project Custons</h1>
-<div class="form-group bg-white p-4 rounded">
+<div class="form-group bg-white p-4 rounded overflow-hidden" style="border: solid 1px rgb(194, 188, 188);">
     <div class="row">
-        <div class="col-md-11 mb-4">
+        <div class="col-12 mb-2">
+            <div class="w-100 d-flex justify-content-end">
+                <button class="btn btn-group" (click)="closeProject()"><i class="pi pi-times-circle text-danger"></i></button>
+            </div>
+        </div>
+        <div class="col-10 mb-4">
             <div class="p-float-label">
                 <input [value]="getFileName()" pInputText id="Project-Name" class="form-control" />
                 <label for="Project-Name">Project Name </label>
             </div>
         </div>
-        <div class="col-md-1 mb-4 d-flex align-items-center justify-content-center">
+        <div class="col-2 mb-4 d-flex align-items-center justify-content-center">
             <div class="pi pi-info-circle" ngbTooltip="Nome que sera dado para seu projeto"></div>
         </div>
     </div>
 
     <div class="row">
         <span>Color: {{selectColor??""}}</span>
-        <div class="col-md-12 mb-4" style="display: flex; align-items: start; overflow-x: auto;">
+        <div class="col-12 mb-4" style="display: flex; align-items: start; overflow-x: auto;">
             <div *ngFor="let color of colors" class="d-flex p-2">
                 <input (click)="setNewColor(color)" [(ngModel)]="selectColor" class="radio-input" type="radio"
                     name="colors" [value]="color.color">
@@ -25,34 +29,34 @@
 
 
     <div class="row">
-        <div class="col-md-11 mb-4">
+        <div class="col-10 mb-4">
             <div class="p-float-label">
                 <input pInputText id="material" class="form-control" />
                 <label for="material">Material</label>
             </div>
         </div>
-        <div class="col-md-1 mb-4 d-flex align-items-center justify-content-center">
+        <div class="col-2 mb-4 d-flex align-items-center justify-content-center">
             <div class="pi pi-info-circle" ngbTooltip="material que sera usado no seu projeto"></div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-11 mb-4 ">
+        <div class="col-10 mb-4 ">
             <label for="slider" class="mb-2">Infill - {{!sliderLayer ? 0 : sliderLayer }}%</label>
             <p-slider name="slider" id="slider" [(ngModel)]="sliderLayer"></p-slider>
         </div>
-        <div class="col-1 mb-4 d-flex align-items-center justify-content-center">
+        <div class="col-2 mb-4 d-flex align-items-center justify-content-center">
             <div class="pi pi-info-circle" ngbTooltip="preenchimento do modelo">
             </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-11 mb-4">
+        <div class="col-10 mb-4">
             <label for="layer" class="mb-2">Layer({{slideInfill}}mm)</label>
             <p-slider [max]="5" [min]="1" name="slider-layer" id="slider" [(ngModel)]="slideInfill"></p-slider>
         </div>
-        <div class="col-md-1 mb-4 d-flex align-items-center justify-content-center">
+        <div class="col-2 mb-4 d-flex align-items-center justify-content-center">
             <div class="pi pi-info-circle"
                 ngbTooltip="tamanho da camada usada para fazer o seu projeto obs: camdas menores tem mais perfeição porem maior custo">
             </div>
@@ -60,19 +64,19 @@
     </div>
 
     <div class="row">
-        <div class="col-md-11 mb-4">
+        <div class="col-10 mb-4">
             <div class="p-float-label">
                 <textarea pInputText id="notes" class="form-control"></textarea>
                 <label for="notes">Notes about the project</label>
             </div>
         </div>
-        <div class="col-md-1 mb-4 d-flex align-items-center justify-content-center">
+        <div class="col-2 mb-4 d-flex align-items-center justify-content-center">
             <div class="pi pi-info-circle" ngbTooltip="gostaria de dar mais detalhes sobre seu projeto"></div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-12">
             <div style="display: flex; align-items: center; justify-content: center;">
                 <p-button icon="pi pi-check-circle" [rounded]="true" [text]="true" severity="success" label="Calculate"
                     iconPos="right" class="rounded"></p-button>

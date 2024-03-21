@@ -1,22 +1,9 @@
-<div #rendererContainer id="render-canva" (mouseenter)="Setpause()" (mouseleave)="Setpause()">
+<div #rendererContainer id="render-canva" class="overflow-hidden w-100 h-100"  (mouseenter)="Setpause()" (mouseleave)="Setpause()">
     <div id="controll-animation-canva">
         <div *ngIf="animation_controll.isPause" id="play" (click)="setGlobalPause()"></div>
         <div id="pause" *ngIf="!animation_controll.isPause" (click)="setGlobalPause()"></div>
     </div>
 
 </div>
-<div style="position: absolute; width: 100%; height: 11%;">
-    <p-fileUpload *ngIf="!file?.name" mode="basic" [chooseLabel]="'Choose'"
-        url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)" [multiple]="false"
-        [auto]="true">
-    </p-fileUpload>
-    <div *ngIf="file?.name"
-        style="top: 0 ;position: absolute;background-color: rgb(245, 126, 245); width: 50%; height: 100%; display: flex; align-items: center; justify-content: center;">
-        <span class="position-absolute text-white text-nowrap"
-            style="max-width: 100%;overflow: hidden; text-overflow: ellipsis; white-space: nowrap; left: 0;">
-            {{ file?.name ?? 'teste' }}
-        </span>
-        <button (click)="removeFile()" id="remove" class="btn btn-group h-100 text-danger">X</button>
-    </div>
-</div>
+
 <!-- <input type="file" (change)="onFileSelected($event)" class="form-control w-75" accept="model/stl"> -->

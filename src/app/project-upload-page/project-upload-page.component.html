@@ -1,0 +1,13 @@
+<div  class="h-100 w-100 container d-flex align-items-center justify-content-center flex-column">
+    <h1 class="tittle-responsive text-center p-3">Faça Upload do seu Projeto</h1>
+    <div  data-aos="fade-up" class="w-75 h-50 rounded d-flex justify-content-center align-items-center p-2" style="border-style: dashed; border-spacing: 12px; border-color: rgb(173, 173, 173); border-width: 2px;">
+        <div class="bg-white w-75 h-75 p-2 rounded d-flex flex-column align-items-center justify-content-center" style="border-style: dashed; border-spacing: 12px; border-color: rgb(197, 195, 195); border-width: 2px;">
+            <i class="pi mb-2 pi-cloud-upload text-secondary" style="font-size: 30px;"></i>
+            <span class="text-center text-responsive "><strong>Selecione o arquivo ou arraste aqui!</strong></span>
+            <span class="text-responsive mb-3 text-center">só aceitamos arquivos STL</span>
+            <p-fileUpload url="https://www.primefaces.org/cdn/api/upload.php" styleClass="btn-outline-primary bg-white text-primary p-2 text-responsive" mode="basic" accept=".stl" (onBeforeUpload)="beforeUpload($event)" (onProgress)="onProgress($event)" (onUpload)="onBasicUploadAuto($event)"  [auto]="true" chooseLabel="Upload"></p-fileUpload>
+        </div>
+    </div>
+</div>
+
+<app-modal-upload [progress]="progress"  #uploadModal></app-modal-upload>

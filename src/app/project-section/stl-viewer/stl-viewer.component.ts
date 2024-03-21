@@ -62,31 +62,69 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
 
   addModelOnScene(geometry: THREE.BufferGeometry, material: THREE.Material) {
     console.log(material)
-    this.scene.remove(this.my_object)
     this.my_object = new THREE.Mesh(geometry, material);
     this.my_object.scale.set(0.01, 0.01, 0.01);
     this.scene.add(this.my_object);
+    this.animation();
+
+  }
+  private getBlob(){
+      // Recupere os dados do arquivo do localStorage
+  const storedData = localStorage.getItem('project');
+  console.log(storedData)
+  if (storedData) {
+    // Analise os dados JSON para obter os detalhes do arquivo
+    const fileData = JSON.parse(storedData);
+    
+    // Converta os dados binários de volta para um array de bytes
+    const byteArray = new Uint8Array(fileData.data);
+
+    // Crie um Blob com os dados binários
+    const blob = new Blob([byteArray], { type: fileData.type });
+
+    // Crie um URL de Blob para o Blob criado
+    const blobUrl = URL.createObjectURL(blob);
+
+    return blobUrl;
+  } else {
+    console.error('Nenhum projeto encontrado no localStorage.');
+    return null;
+  }
   }
 
-
   putDefaultObject() {
-    const geometry = new THREE.BoxGeometry(100, 100, 100);
-    const material = new THREE.MeshNormalMaterial({ wireframe: true });
-    this.addModelOnScene(geometry, material)
+    const blob= this.getBlob()
+    if(!blob) throw new Error("sem arquivo")
+
+    this.loader.load(blob, (geometry) => {
+      console.log(geometry)
+      // const material = new THREE.MeshBasicMaterial(); // vermelho
+      const material = new THREE.MeshNormalMaterial()
+      this.addModelOnScene(geometry, material)
+    });
+
   }
 
   initializeScene() {
     const width = window.innerWidth;
     const height = window.innerHeight;
-
+    console.log()
     this.scene = new THREE.Scene();
 
     this.camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 10);
     this.camera.position.z = 2;
+    console.log((this.rendererContainer.nativeElement as HTMLElement).offsetWidth)
+    console.log((this.rendererContainer.nativeElement as HTMLElement).offsetHeight)
 
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
-    this.renderer.setSize(width / 2, height / 2);
-    this.renderer.setClearColor(0x000000); // Definir o fundo como branco
+    if(width<768){
+      this.renderer.setSize((this.rendererContainer.nativeElement as HTMLElement).offsetWidth, (this.rendererContainer.nativeElement as HTMLElement).offsetWidth);
+    }
+    else{
+      this.renderer.setSize((this.rendererContainer.nativeElement as HTMLElement).offsetWidth, (this.rendererContainer.nativeElement as HTMLElement).offsetHeight);
+
+    }
+    this.renderer.setClearColor(0xfffffff); // Definir o fundo como branco
 
     this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
 
@@ -97,7 +135,6 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
     this.putDefaultObject()
 
     //Iniciar a animação
-    this.animation();
   }
 
   animation() {
@@ -130,14 +167,7 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
     const file = event.files[0];
     if (file) {
       this.file_service.setCurrentFile(file)
-      this.loader.load(URL.createObjectURL(file), (geometry) => {
-        // const material = new THREE.MeshBasicMaterial(); // vermelhoa
-        const material = new THREE.MeshBasicMaterial()
-        //const mesh = new THREE.Mesh(geometry , material);
-        this.scene.remove(this.my_object);
-        this.addModelOnScene(geometry, material)
-        this.animation()
-      });
+    
     }
   }
 }

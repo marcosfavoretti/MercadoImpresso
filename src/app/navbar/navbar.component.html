@@ -1,0 +1,45 @@
+<nav class="navbar w-100 fixed-top bg-white rounded"  data-aos="flip-up">
+    <div class="container " #navbar>
+        <div class="row" style="width: 100vw; margin-left: 0; margin-right: 0;">
+            <div class="d-flex w-100 col-12 w-100"
+                style="justify-content: space-between; border-bottom: solid black 1px; align-items: center;">
+                <div class="w-100 d-flex">
+                    <a routerLink="/" class="navbar-brand" style="max-width: 20%; max-height: 100%;">
+                        <img src="../../assets/logo-recortado.png" class="object-fit-cover w-100" alt="">
+                    </a>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <!-- Adiciona a classe mx-auto para centralizar -->
+                        <h1 class="tittle-responsive">Mercado Impresso</h1>
+                    </div>
+                </div>
+                <div class="w-auto bg-white h-100 d-flex align-items-center">
+                    <i class="p-2 pi pi-search"></i>
+                    <i class="p-2 pi pi-user" pBadge value="2" severity="danger"></i>
+                    <i class="p-2 pi pi-shopping-bag" pBadge value="2"></i>
+                </div>
+            </div>
+            <div class="p-lg-3 w-100 col-12" style="border-bottom: 1px solid black ;position: sticky; ">
+                <ul class="w-100 d-flex list-inline" style="justify-content: space-around;">
+                    <li class="nav-item w-100 p-1 d-flex justify-content-center align-items-center"
+                    *ngFor="let topic of topics" >
+                    <a [routerLink]="topic.router" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-link text-responsive text-center">{{topic.name}}</a>
+                </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+</nav>
+
+<p-scrollTop styleClass="rounded-circle"></p-scrollTop>
+
+
+
+<!-- <li *ngFor="let topic of topics" class="mb-2">
+                                <button class="btn btn-success" [routerLink]="topic.action"
+                                    style="height: 70px; width: 70px; border-radius: 50%; padding: 2%;">
+                                    <i ngClass="{{topic.icon}}"></i>
+                                    <div class="pointer-event align-middle text-responsive">{{topic.label}}</div>
+                                </button>
+                            </li> -->

@@ -1,0 +1,16 @@
+<ngb-carousel #carousel>
+    <ng-template *ngFor="let infra of item; let i = index" ngbSlide>
+        <div class="d-flex align-items-center justify-content-center" style="background-color: rgb(226, 217, 214); border-bottom: solid 1px black;border-top: solid 1px black;">
+            <div class="w-50 d-flex align-items-center justify-content-center">
+                <div class="">
+                    <img src="{{infra}}" alt="" class="object-fit-cover w-100" data-aos="fade-in">
+                </div>
+                <div class="w-100 h-100 " style="color: rgb(167, 106, 66);">
+                    <h3 class="tittle-responsive">Itens de qualidade</h3>
+                    <span class="tittle-responsive">&</span>
+                    <h1  class="tittle-responsive">preços bons</h1>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</ngb-carousel>

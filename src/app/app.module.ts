@@ -4,6 +4,8 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ToastModule } from 'primeng/toast';
 
 import { AppComponent } from './app.component';
 import { ProjectSectionComponent } from './project-section/project-section.component';
@@ -14,7 +16,16 @@ import { ClientCustomFormsComponent } from './project-section/client-custom-form
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SliderModule } from 'primeng/slider';
 import { FormsModule } from '@angular/forms';
-import { RotesHandleComponent } from './rotes-handle/rotes-handle.component';
+import { ProjectUploadPageComponent } from './project-upload-page/project-upload-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { ScrollTopModule } from 'primeng/scrolltop';
+import { BadgeModule } from 'primeng/badge';
+import { ModalUploadComponent } from './project-upload-page/modal-upload/modal-upload.component';
+import { LandPageComponent } from './land-page/land-page.component';
+import { CarouselMainComponent } from './land-page/carousel-main/carousel-main.component';
+import { SomeProductsGridComponent } from './land-page/some-products-grid/some-products-grid.component';
+import { OrcamentoProjectComponent } from './land-page/orcamento-project/orcamento-project.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +33,22 @@ import { RotesHandleComponent } from './rotes-handle/rotes-handle.component';
     ProjectSectionComponent,
     StlViewerComponent,
     ClientCustomFormsComponent,
-    RotesHandleComponent
+    ProjectUploadPageComponent,
+    NavbarComponent,
+    FooterComponent,
+    ModalUploadComponent,
+    LandPageComponent,
+    CarouselMainComponent,
+    SomeProductsGridComponent,
+    OrcamentoProjectComponent
   ],
   imports: [
+    ToastModule,
+    ProgressBarModule,
+    FileUploadModule,
+    BadgeModule,
+    ScrollTopModule,
+    AppRoutingModule,
     FormsModule,
     SliderModule,
     RadioButtonModule,

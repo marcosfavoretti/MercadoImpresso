@@ -1,0 +1,12 @@
+.background-project{
+    height: 40vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-image: url('../../../assets/background-project.png'); /* Caminho para sua imagem */
+    background-size:  cover; /* Cobrir todo o elemento */
+    background-repeat: no-repeat;
+    background-position: bottom; /* Centralizar a imagem */
+}  

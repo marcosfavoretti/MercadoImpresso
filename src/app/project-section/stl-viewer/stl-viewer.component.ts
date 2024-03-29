@@ -68,33 +68,33 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
     this.animation();
 
   }
-  private getBlob(){
-      // Recupere os dados do arquivo do localStorage
-  const storedData = localStorage.getItem('project');
-  console.log(storedData)
-  if (storedData) {
-    // Analise os dados JSON para obter os detalhes do arquivo
-    const fileData = JSON.parse(storedData);
-    
-    // Converta os dados binários de volta para um array de bytes
-    const byteArray = new Uint8Array(fileData.data);
+  private getBlob() {
+    // Recupere os dados do arquivo do localStorage
+    const storedData = localStorage.getItem('project');
+    console.log(storedData)
+    if (storedData) {
+      // Analise os dados JSON para obter os detalhes do arquivo
+      const fileData = JSON.parse(storedData);
 
-    // Crie um Blob com os dados binários
-    const blob = new Blob([byteArray], { type: fileData.type });
+      // Converta os dados binários de volta para um array de bytes
+      const byteArray = new Uint8Array(fileData.data);
 
-    // Crie um URL de Blob para o Blob criado
-    const blobUrl = URL.createObjectURL(blob);
+      // Crie um Blob com os dados binários
+      const blob = new Blob([byteArray], { type: fileData.type });
 
-    return blobUrl;
-  } else {
-    console.error('Nenhum projeto encontrado no localStorage.');
-    return null;
-  }
+      // Crie um URL de Blob para o Blob criado
+      const blobUrl = URL.createObjectURL(blob);
+
+      return blobUrl;
+    } else {
+      console.error('Nenhum projeto encontrado no localStorage.');
+      return null;
+    }
   }
 
   putDefaultObject() {
-    const blob= this.getBlob()
-    if(!blob) throw new Error("sem arquivo")
+    const blob = this.getBlob()
+    if (!blob) throw new Error("sem arquivo")
 
     this.loader.load(blob, (geometry) => {
       console.log(geometry)
@@ -117,14 +117,14 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
     console.log((this.rendererContainer.nativeElement as HTMLElement).offsetHeight)
 
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
-    if(width<768){
+    if (width < 768) {
       this.renderer.setSize((this.rendererContainer.nativeElement as HTMLElement).offsetWidth, (this.rendererContainer.nativeElement as HTMLElement).offsetWidth);
     }
-    else{
+    else {
       this.renderer.setSize((this.rendererContainer.nativeElement as HTMLElement).offsetWidth, (this.rendererContainer.nativeElement as HTMLElement).offsetHeight);
 
     }
-    this.renderer.setClearColor(0xfffffff); // Definir o fundo como branco
+    this.renderer.setClearColor(0xECECEC); // Definir o fundo como branco
 
     this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
 
@@ -167,7 +167,7 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
     const file = event.files[0];
     if (file) {
       this.file_service.setCurrentFile(file)
-    
+
     }
   }
 }

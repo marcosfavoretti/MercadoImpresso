@@ -26,15 +26,17 @@
 
 #play {
     position: absolute;
+    top: 50%;
     width: 100%;
     aspect-ratio: 1/1;
-    background: linear-gradient(45deg, black 50%, transparent 50%);
+    background: linear-gradient(45deg, gray 50%, transparent 50%);
     transform: rotate(-135deg);
 }
 
 #pause {
+    top: 50%;
     position: absolute;
     width: 100%;
     aspect-ratio: 1/1;
-    background: linear-gradient(to right, transparent 25%, black 25%, black 50%, transparent 50%, transparent 75%, black 75%, black 100%);
+    background: linear-gradient(to right, transparent 25%, gray 25%, gray 50%, transparent 50%, transparent 75%, gray 75%, gray 100%);
 }

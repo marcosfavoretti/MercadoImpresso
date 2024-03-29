@@ -1,28 +1,36 @@
-<div class="form-group bg-white p-4 rounded overflow-hidden" style="border: solid 1px rgb(194, 188, 188);">
-    <div class="row">
-        <div class="col-12 mb-2">
-            <div class="w-100 d-flex justify-content-end">
-                <button class="btn btn-group" (click)="closeProject()"><i class="pi pi-times-circle text-danger"></i></button>
-            </div>
+<div class="form-group bg-white p-4 rounded overflow-hidden">
+    <div class="row mb-3">
+        <div class="w-100 d-flex justify-content-end">
+            <button class="btn btn-group" (click)="closeProject()"><i
+                    class="pi pi-times-circle text-danger"></i></button>
         </div>
-        <div class="col-10 mb-4">
+        <div class="col-10">
             <div class="p-float-label">
                 <input [value]="getFileName()" pInputText id="Project-Name" class="form-control" />
                 <label for="Project-Name">Project Name </label>
             </div>
         </div>
-        <div class="col-2 mb-4 d-flex align-items-center justify-content-center">
+        <div class="col-2 d-flex align-items-center justify-content-center">
             <div class="pi pi-info-circle" ngbTooltip="Nome que sera dado para seu projeto"></div>
+        </div>
+        <div class="col-12 mb-4 mt-4">
+            <h3 class="tittle-responsive">R$ 00,00</h3>
+        </div>
+        <div class="col-12 d-flex align-items-center justify-content-center">
+            <button class="btn btn-group btn-dark w-100  p-2 d-flex align-items-center justify-content-center">Add to
+                Shopping Bag</button>
         </div>
     </div>
 
     <div class="row">
-        <span>Color: {{selectColor??""}}</span>
+        <h1 class="tittle-responsive mb-3">Configuração do Modelo</h1>
+
+        <span class="text-center text-secondary">Color: {{selectColor??""}}</span>
         <div class="col-12 mb-4" style="display: flex; align-items: start; overflow-x: auto;">
             <div *ngFor="let color of colors" class="d-flex p-2">
                 <input (click)="setNewColor(color)" [(ngModel)]="selectColor" class="radio-input" type="radio"
                     name="colors" [value]="color.color">
-                <span>{{color.color}}</span>
+                <span class="text-secondary text-responsive">{{color.color}}</span>
             </div>
         </div>
     </div>
@@ -42,7 +50,7 @@
 
     <div class="row">
         <div class="col-10 mb-4 ">
-            <label for="slider" class="mb-2">Infill - {{!sliderLayer ? 0 : sliderLayer }}%</label>
+            <label for="slider" class="mb-2 text-secondary">Infill - {{!sliderLayer ? 0 : sliderLayer }}%</label>
             <p-slider name="slider" id="slider" [(ngModel)]="sliderLayer"></p-slider>
         </div>
         <div class="col-2 mb-4 d-flex align-items-center justify-content-center">
@@ -53,7 +61,7 @@
 
     <div class="row">
         <div class="col-10 mb-4">
-            <label for="layer" class="mb-2">Layer({{slideInfill}}mm)</label>
+            <label for="layer" class="mb-2 text-secondary">Layer({{slideInfill}}mm)</label>
             <p-slider [max]="5" [min]="1" name="slider-layer" id="slider" [(ngModel)]="slideInfill"></p-slider>
         </div>
         <div class="col-2 mb-4 d-flex align-items-center justify-content-center">
@@ -75,14 +83,14 @@
         </div>
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-12">
             <div style="display: flex; align-items: center; justify-content: center;">
                 <p-button icon="pi pi-check-circle" [rounded]="true" [text]="true" severity="success" label="Calculate"
                     iconPos="right" class="rounded"></p-button>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- <h1>Current Value</h1>
     <h2>R$ 70,90</h2> -->
 </div>

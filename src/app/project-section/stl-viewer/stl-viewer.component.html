@@ -1,4 +1,5 @@
-<div #rendererContainer id="render-canva" class="overflow-hidden w-100 h-100"  (mouseenter)="Setpause()" (mouseleave)="Setpause()">
+<div #rendererContainer id="render-canva" class="overflow-hidden w-100 h-100 rounded-2" (mouseenter)="Setpause()"
+    (mouseleave)="Setpause()">
     <div id="controll-animation-canva">
         <div *ngIf="animation_controll.isPause" id="play" (click)="setGlobalPause()"></div>
         <div id="pause" *ngIf="!animation_controll.isPause" (click)="setGlobalPause()"></div>

@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { Carousel, CarouselResponsiveOptions } from 'primeng/carousel';
+import { ICarousel } from 'src/app/Objects/ICarousel';
 
 @Component({
   selector: 'app-carousel-main',
@@ -7,7 +9,25 @@ import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/n
   styleUrls: ['./carousel-main.component.css']
 })
 export class CarouselMainComponent {
-  item = ['../../../assets/item.png']
+  constructor() {
+    Carousel.prototype.onTouchMove = () => {
+
+    }
+  }
+  item: ICarousel[] = [
+    {
+      image: '../../../assets/item.png',
+      desc: "Preço & Qualidade",
+      uptittles: "conheça nossos produtos"
+    },
+  ]
+  carouselOptions: CarouselResponsiveOptions[] = [
+    {
+      breakpoint: "Exp",
+      numScroll: 2,
+      numVisible: 2
+    }
+  ]
   paused = false;
   unpauseOnArrow = false;
   pauseOnIndicator = false;
@@ -36,5 +56,5 @@ export class CarouselMainComponent {
     if (this.pauseOnIndicator && !slideEvent.paused && slideEvent.source === NgbSlideEventSource.INDICATOR) {
       this.togglePaused();
     }
-}
+  }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CarouselTemplates } from 'primeng/carousel';
+import { CarouselPageEvent, CarouselTemplates } from 'primeng/carousel';
 
 @Component({
   selector: 'app-carousel-collection',

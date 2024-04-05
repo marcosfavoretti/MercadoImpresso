@@ -6,7 +6,6 @@ import { ButtonModule } from 'primeng/button';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
-
 import { AppComponent } from './app.component';
 import { ProjectSectionComponent } from './project-section/project-section.component';
 import { StlViewerComponent } from './project-section/stl-viewer/stl-viewer.component';
@@ -26,6 +25,7 @@ import { LandPageComponent } from './land-page/land-page.component';
 import { CarouselMainComponent } from './land-page/carousel-main/carousel-main.component';
 import { SomeProductsGridComponent } from './land-page/some-products-grid/some-products-grid.component';
 import { OrcamentoProjectComponent } from './land-page/orcamento-project/orcamento-project.component';
+import { CarouselCollectionComponent } from './project-section/carousel-collection/carousel-collection.component';
 
 @NgModule({
   declarations: [

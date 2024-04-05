@@ -25,6 +25,8 @@ import { LandPageComponent } from './land-page/land-page.component';
 import { CarouselMainComponent } from './land-page/carousel-main/carousel-main.component';
 import { SomeProductsGridComponent } from './land-page/some-products-grid/some-products-grid.component';
 import { OrcamentoProjectComponent } from './land-page/orcamento-project/orcamento-project.component';
+import { CarouselModule } from 'primeng/carousel';
+import { TagModule } from 'primeng/tag';
 import { CarouselCollectionComponent } from './project-section/carousel-collection/carousel-collection.component';
 
 @NgModule({
@@ -40,9 +42,12 @@ import { CarouselCollectionComponent } from './project-section/carousel-collecti
     LandPageComponent,
     CarouselMainComponent,
     SomeProductsGridComponent,
-    OrcamentoProjectComponent
+    OrcamentoProjectComponent,
+    CarouselCollectionComponent
   ],
   imports: [
+    TagModule,
+    CarouselModule,
     ToastModule,
     ProgressBarModule,
     FileUploadModule,

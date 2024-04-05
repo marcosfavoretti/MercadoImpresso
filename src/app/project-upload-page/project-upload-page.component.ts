@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FileBeforeUploadEvent, FileProgressEvent, FileUploadEvent } from 'primeng/fileupload';
 import { ModalUploadComponent } from './modal-upload/modal-upload.component';
 import { UploadService } from '../Services/UploadService/upload-service.service';
+import { axiosClient } from 'src/axios.client';
 
 @Component({
   selector: 'app-project-upload-page',
@@ -15,14 +16,13 @@ export class ProjectUploadPageComponent implements OnInit {
   progress: number = 0;
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('project'));
+    // console.log(localStorage.getItem('project'));
     if (localStorage.getItem('project')) {
       this.goCustom();
     }
   }
 
-  onBasicUploadAuto(event: FileUploadEvent): void {
-    console.log(event);
+  async onUpload(event: FileUploadEvent): Promise<void> {
     this.upload.setProject(event.files[0]);
     this.setLocalStorageProject(event.files[0]).then(() => {
       this.goCustom();
@@ -32,11 +32,12 @@ export class ProjectUploadPageComponent implements OnInit {
   }
 
   onProgress(event: FileProgressEvent): void {
-    console.log(event.progress);
+    console.log(`progress ${event.progress}`)
     this.progress = event.progress;
   }
 
   beforeUpload(event: FileBeforeUploadEvent): void {
+    console.log('before')
     this.modal.open();
   }
 

@@ -1,36 +1,56 @@
-<footer style="background-color: rgb(96, 96, 96); overflow: hidden;">
-    <div class="position-relative row align-items-center p-5">
-        <div class="col-md-4 col-sm-12 mb-5">
+<footer style="background-color: rgb(50, 51, 52); overflow: hidden;">
+    <div class="position-relative row pt-5">
+        <div class="col-md-3 col-sm-12 mb-5">
             <div class="d-flex flex-column align-items-center justify-content-center">
-                <div class="p-1">
-                    <img src="../../assets/logo-recortado.png" alt="" class="object-fit-cover mb-2 w-100 h-100">
-                </div>
-                    <h1 class="tittle-responsive text-center text-white align-items-center justify-content-center">Mercado Impresso</h1>
-                <span class="text-center text-white text-responsive ethos_logo_letter">
-                    imprimindo sonhos desde 2024
-                </span>
+                <h1
+                    class="logo-font tittle-responsive text-center text-white align-items-center justify-content-center">
+                    Mercado
+                    Impresso</h1>
+                <span class="text-center text-light text-responsive text-font">
+                    Sua jornada criativa começa aqui Impressão 3D sem complicações para você </span>
             </div>
         </div>
-        <div class="col-md-4 col-sm-6 col-6">
+        <div class="col-md-3 col-sm-4 col-3">
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <ul class="text-white list-unstyled text-center text-responsive ethos_logo_letter"
                     style="list-style: none;">
-                    <li class="m-2" *ngFor="let item of topics" routerLink="/{{item.router}}" style="cursor: pointer;">{{item.name}}</li>
+                    <li class="m-2" style="cursor: pointer;">
+                        <strong>Loja</strong>
+                    </li>
+                    <li class="m-2" *ngFor="let item of topics" routerLink="/{{item.router}}" style="cursor: pointer;">
+                        {{item.name}}</li>
                 </ul>
             </div>
         </div>
-        <div class="col-md-4 col-sm-6 col-6">
+        <div class="col-md-3 col-sm-4 col-3">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <ul class="text-white list-unstyled text-center text-responsive ethos_logo_letter"
+                    style="list-style: none;">
+                    <li class="m-2" style="cursor: pointer;">
+                        <strong>Mais Links</strong>
+                    </li>
+                    <li class="m-2" *ngFor="let item of topics" routerLink="/{{item.router}}" style="cursor: pointer;">
+                        {{item.name}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-4 col-6">
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <ul class="text-white text-responsive ethos_logo_letter text-center" style="list-style: none;">
-                    <li class><i class="pi pi-phone p-2 text-white text-responsive"></i>Telefone:</li>
-                    <li>(15) xxxxxxxx</li>
-                    <li class> <i class="pi pi-envelope p-2 text-white text-responsive"></i>Email: </li>
-                    <li>mercadoimpresso@gmail.com</li>
-                    <li class><i class="pi pi-home p-2 text-white text-responsive"></i>Endereço: </li>
-                    <li>Boituva-Sp</li>
+                    <li class><strong>Endereço:</strong></li>
+                    <br>
+                    <li>Rodovia Senador José,<br>1235 - Jardim Costantino,<br>Sorocaba - SP</li>
+                    <hr>
+                    <li>Ficou com alguma dúvida?</li>
+                    <li>+55 (15) 3238-1188</li>
+                    <li>contato@mercadoimpresso.com</li>
                 </ul>
             </div>
         </div>
+        <div class="col-12 bg-black text-center p-1">
+            <span class="text-light text-responsive">
+                Mercado Impresso © – All rights reserved </span>
+        </div>
     </div>
-      
+
 </footer>

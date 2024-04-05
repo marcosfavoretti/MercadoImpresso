@@ -61,7 +61,7 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
   }
 
   addModelOnScene(geometry: THREE.BufferGeometry, material: THREE.Material) {
-    console.log(material)
+    // console.log(material)
     this.my_object = new THREE.Mesh(geometry, material);
     this.my_object.scale.set(0.01, 0.01, 0.01);
     this.scene.add(this.my_object);
@@ -71,7 +71,6 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
   private getBlob() {
     // Recupere os dados do arquivo do localStorage
     const storedData = localStorage.getItem('project');
-    console.log(storedData)
     if (storedData) {
       // Analise os dados JSON para obter os detalhes do arquivo
       const fileData = JSON.parse(storedData);
@@ -97,7 +96,7 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
     if (!blob) throw new Error("sem arquivo")
 
     this.loader.load(blob, (geometry) => {
-      console.log(geometry)
+      // console.log(geometry)
       // const material = new THREE.MeshBasicMaterial(); // vermelho
       const material = new THREE.MeshNormalMaterial()
       this.addModelOnScene(geometry, material)
@@ -113,8 +112,8 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
 
     this.camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 10);
     this.camera.position.z = 2;
-    console.log((this.rendererContainer.nativeElement as HTMLElement).offsetWidth)
-    console.log((this.rendererContainer.nativeElement as HTMLElement).offsetHeight)
+    // console.log((this.rendererContainer.nativeElement as HTMLElement).offsetWidth)
+    // console.log((this.rendererContainer.nativeElement as HTMLElement).offsetHeight)
 
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
     if (width < 768) {

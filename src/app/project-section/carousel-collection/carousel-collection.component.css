@@ -1,0 +1,25 @@
+.img-background {
+    background: linear-gradient(to bottom, rgb(217, 217, 217) 50%, transparent 50%);
+
+}
+
+ul li {
+    width: 5%;
+    aspect-ratio: 1/1;
+    background-color: black;
+    border-radius: 50%;
+    border: 1px gray solid;
+}
+
+.product-item {
+    .product-item-content {
+        margin: .3rem;
+        text-align: start;
+        padding: 2rem 0;
+    }
+
+    .product-image {
+        width: 50%;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+    }
+}

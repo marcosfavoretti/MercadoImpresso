@@ -5,9 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './project-section.component.html',
   styleUrls: ['./project-section.component.css']
 })
-export class ProjectSectionComponent implements OnInit{
+export class ProjectSectionComponent implements OnInit {
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('project'))
+    // console.log(localStorage.getItem('project'))
   }
 }

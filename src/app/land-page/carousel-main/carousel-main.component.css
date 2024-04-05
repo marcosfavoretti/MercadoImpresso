@@ -1,0 +1,4 @@
+.letter-carousel {
+    color: rgb(168, 106, 61);
+    font-size: clamp(1.25rem, 0.3977rem + 2.2727vw, 3.125rem);
+}

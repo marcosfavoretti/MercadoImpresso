@@ -1,17 +1,4 @@
 .active {
    position: relative;
-
-}
-
-
-.active::after {
-content: "";
-position: absolute;
-width: 15%;
-z-index: -1;
-top: 100%;
-left: 42.5%;
-aspect-ratio: 1/1;
-background: linear-gradient(to bottom right, lightblue 50%, white 50%);
-rotate: 45deg;
+   font-weight: bold;
 }

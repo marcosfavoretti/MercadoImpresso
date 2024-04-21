@@ -51,7 +51,7 @@
     <div class="row">
         <div class="col-10 mb-4 ">
             <label for="slider" class="mb-2 text-secondary">Infill - {{!sliderLayer ? 0 : sliderLayer }}%</label>
-            <p-slider name="slider" id="slider" [(ngModel)]="sliderLayer"></p-slider>
+            <p-slider [min]="5" name="slider" id="slider" [(ngModel)]="sliderLayer"></p-slider>
         </div>
         <div class="col-2 mb-4 d-flex align-items-center justify-content-center">
             <div class="pi pi-info-circle" ngbTooltip="preenchimento do modelo">

@@ -15,12 +15,12 @@
 <app-carousel-main></app-carousel-main>
 
 <!--fazer um novo componente para as linhas de baixo-->
-<div class="container overflow-hidden">
+<div class="container overflow-hidden mb-5">
     <div class="row d-flex align-items-stretch">
-        <div class="col-sm-12 col-md-6 col-lg-6 h-100" data-aos="fade-right">
-            <div class="d-flex align-items-center justify-content-center rounded shadow-sm p-2 h-50">
+        <div class="col-sm-12 col-md-6 col-lg-6" data-aos="fade-right" >
+            <div class="d-flex align-items-center justify-content-center rounded shadow-sm p-2 "style="min-height: 210px">
                 <div class="w-100 h-100">
-                    <img src="../../assets/dentes.png" class="object-fit-contain w-100 h-100" alt="">
+                    <img src="../../assets/land-page/dentes.png" class="object-fit-cover"   alt="">
                 </div>
                 <div>
                     <h1 class="tittle-responsive">Peças Sob Medida</h1>
@@ -28,11 +28,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-6" data-aos="fade-left"><!--nao gostei do jeito que deixei isso aqui-->
-            <div class="d-flex align-items-center justify-content-center shadow-sm p-2 h-50 rounded"
-                style="background-color: rgb(234, 233, 231);">
+        <div class="col-sm-12 col-md-6 col-lg-6"  data-aos="fade-left"><!--nao gostei do jeito que deixei isso aqui-->
+            <div class="d-flex align-items-center justify-content-center shadow-sm p-2  rounded"
+                style="background-color: rgb(234, 233, 231); min-height: 210px" >
                 <div class="w-100 h-100">
-                    <img src="../../assets/darth.png" class="object-fit-contain w-100 h-100" alt="">
+                    <img src="../../assets/land-page/darth.png" class="object-fit-cover"  alt="">
                 </div>
                 <div>
                     <h1 class="tittle-responsive">Bonecos Colecionáveis</h1>
@@ -42,7 +42,8 @@
         </div>
     </div>
 </div>
-<app-carousel-collection></app-carousel-collection>
+
+<app-shopping-grid></app-shopping-grid>
 
 <div class="container">
     <app-orcamento-project></app-orcamento-project>

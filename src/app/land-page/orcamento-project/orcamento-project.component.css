@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    background-image: url('../../../assets/background-project.png'); /* Caminho para sua imagem */
+    background-image: url('../../../assets/land-page/background-project.png'); /* Caminho para sua imagem */
     background-size:  cover; /* Cobrir todo o elemento */
     background-repeat: no-repeat;
     background-position: bottom; /* Centralizar a imagem */

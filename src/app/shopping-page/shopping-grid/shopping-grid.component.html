@@ -1,0 +1,23 @@
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-md-3 col-6  my-2 d-flex align-items-center justify-content-center" *ngFor="let product of products">
+            <p-card [routerLink]="'/loja/item/'+product.id">
+                <div class="rounded" style="background: linear-gradient(to bottom, rgb(217, 217, 217) 50%, transparent 50%);">
+                    <div>
+                        <img src="{{product.image}}" alt="" class="w-100 h-100 object-fit-cover">
+                    </div>
+                </div>
+                <ng-template pTemplate="footer">
+                    <div class="d-flex flex-column">
+                        <span class="fw-bold text-responsive">{{product.name}}</span>
+                        <ul class="d-flex list-inline gap-1 align-items-center h-100">
+                            <li *ngFor="let mat of enable_material"
+                                [ngStyle]="mat.color ? {'background-color': mat.color} : {}"></li>
+                        </ul>
+                        <span class="fw-bold ">R${{product.price}}</span>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+    </div>
+</div>

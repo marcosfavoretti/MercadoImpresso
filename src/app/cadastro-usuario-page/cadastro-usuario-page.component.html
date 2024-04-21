@@ -1,0 +1,44 @@
+<div style="margin-top: 20vh; min-height: 100%;" class="container">
+    <div class="container px-4">
+        <h1>Criar Conta</h1>
+        <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
+            <div class="row">
+                <span class="p-float-label mt-4 col-md-6 col-12">
+                    <input pInputText class="input-group rounded p-3 w-100" id="usuario" name="usuario" type="text"
+                        ngModel required />
+                    <label for="usuario" class="px-3">Usúario</label>
+                </span>
+                <span class="p-float-label mt-4 col-md-6 col-12">
+                    <input pInputText class="input-group rounded p-3" id="senha" name="senha" type="text" ngModel
+                        required />
+                    <label for="senha" class="px-3">Senha</label>
+                </span>
+                <span class="p-float-label mt-4 col-md-6 col-12">
+                    <input pInputText class="input-group rounded p-3" id="email" name="email" type="text" ngModel
+                        required />
+                    <label for="email" class="px-3">Email</label>
+                </span>
+                
+                <span class="p-float-label mt-4 col-md-6 col-12">
+                    <input pInputText class="input-group rounded p-3" id="bairro" name="bairro" type="text" ngModel
+                        required />
+                    <label for="bairro" class="px-3">Bairro</label>
+                </span>
+                <span class="p-float-label mt-4 col-md-6 col-12">
+                    <input pInputText class="input-group rounded p-3" id="rua" name="rua" type="text" ngModel
+                        required />
+                    <label for="rua" class="px-3">Rua</label>
+                </span>
+                <span class="p-float-label mt-4 col-md-6 col-12">
+                    <input pInputText class="input-group rounded p-3" id="numero" name="numero" type="text" ngModel
+                        required />
+                    <label for="numero" class="px-3">Número</label>
+                </span>
+                <div class="d-flex align-items-center justify-content-center flex-column mb-3 mt-4">
+                    <button class="btn btn-group btn-dark px-5" type="submit">Entrar</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

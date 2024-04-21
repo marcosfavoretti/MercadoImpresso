@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
+import { LoginService } from './Services/loginService/login.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,10 @@ import * as AOS from 'aos';
 })
 export class AppComponent implements OnInit {
   title = 'Ecommerce3dPrinter';
-  ngOnInit() {
+  constructor(private login: LoginService){}
+  async ngOnInit() {
+    await this.login.checkLogin()
+    console.log('check login')
     AOS.init();
     console.log('init aos')
   }

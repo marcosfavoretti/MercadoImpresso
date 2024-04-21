@@ -1,12 +1,12 @@
-<div data-aos="fade-up">
+<div data-aos="fade-up" class="container">
     <span class="tittle-responsive" style="margin-left: 3%;"><strong>Produtos semelhantes:</strong></span>
     <p-carousel [value]="products" [numVisible]="6" [numScroll]="1" [circular]="true" [showIndicators]="false"
         [responsiveOptions]="carouselOptions">
         <ng-template let-product pTemplate="item">
-            <div class="product-item">
+            <div class="product-item" [routerLink]="'/loja/item/'+product.id" style="cursor: pointer;">
                 <div class="product-item-content">
-                    <div class="p-mb-3 img-background rounded-3">
-                        <img src="{{product.image}}" [alt]="product.name" class="object-fit-cover w-100 h-100" />
+                    <div class="img-background">
+                        <img src="{{product.image}}" [alt]="product.name" class="object-fit-cover w-100 h-100"  />
 
                     </div>
                     <div>

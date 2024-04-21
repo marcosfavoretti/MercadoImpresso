@@ -1,0 +1,30 @@
+<div style="margin-top: 20vh;">
+    <div class="container" style="min-height: 100vh;">
+        <div class="row mb-3">
+            <div class="col-md-6 col-12 d-flex flex-column justify-content-center align-items-center">
+                <div class="rounded w-75" style="background: linear-gradient(to bottom, rgb(217, 217, 217) 50%, transparent 50%);">
+                    <img src="{{currentItem.image}}" class="w-100 h-100 object-fit-contain" alt="">
+                </div>
+               
+            </div>
+            <div class="col-md-6 col-12 d-flex flex-column">
+                <h1 class="mb-4">{{currentItem.name}}</h1>
+                <h2 class="tittle-responsive mb-4">R${{currentItem.price}}</h2>
+                <!-- mudar para pipe o display do nome e material -->
+                <span class="mb-2">Material: {{currentMaterial? currentMaterial?.name +"/"  : "None"}}{{currentMaterial?.color}}</span>
+
+                <ul class="d-flex list-inline gap-1 align-items-center">
+                    <li *ngFor="let mat of enable_material"
+                        [ngStyle]="mat.color ? {'background-color': mat.color} : {}" (click)="setMaterial(mat)"></li>
+                </ul>
+                <p-rating [(ngModel)]="rating" [cancel]="false"></p-rating>
+                <div class="w-100 container overflow-hidden">
+                    <span class="text-responsive text-danger text-break">descrição</span>
+                    <p>{{currentItem.desc}}</p>
+                </div>
+                <button class="mb-3 btn btn-group btn-dark w-50 d-flex align-items-center justify-content-center">Comprar <i class="pi pi-shopping-cart"></i></button>
+            </div>
+        </div>
+        <app-carousel-collection></app-carousel-collection>
+    </div>
+</div>

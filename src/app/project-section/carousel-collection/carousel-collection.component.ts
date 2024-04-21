@@ -3,6 +3,7 @@ import { CarouselResponsiveOptions, CarouselTemplates, Carousel } from 'primeng/
 import { TagTemplates } from 'primeng/tag';
 import { IProduct } from 'src/app/Objects/IProduct';
 import { MaterialService } from 'src/app/Services/MaterialService/material.service';
+import { products } from 'src/app/shopping-page/products';
 
 @Component({
   selector: 'app-carousel-collection',
@@ -33,59 +34,5 @@ export class CarouselCollectionComponent implements OnInit {
   ngOnInit(): void {
     console.log(window.innerWidth)
   }
-  products: IProduct[] = [
-    {
-      name: '1',
-      image: '../../../assets/product-default.png',
-      price: '10.00',
-      collection: 'sci-fy',
-    },
-    {
-      name: '2',
-
-      image: '../../../assets/product-default.png',
-      price: '10.00',
-      collection: 'sci-fy',
-    },
-    {
-      name: '3',
-
-      image: '../../../assets/product-default.png',
-      price: '10.00',
-      collection: 'sci-fy',
-    },
-    {
-      name: '4',
-
-      image: '../../../assets/product-default.png',
-      price: '10.00',
-      collection: 'sci-fy',
-    },
-    {
-      name: '5',
-
-      image: '../../../assets/product-default.png',
-      price: '10.00',
-      collection: 'sci-fy',
-    },
-    {
-      name: '6',
-
-      image: '../../../assets/product-default.png',
-      price: '10.00',
-      collection: 'sci-fy',
-    }, {
-      name: '7',
-
-      image: '../../../assets/product-default.png',
-      price: '10.00',
-      collection: 'sci-fy',
-    }, {
-      name: '8',
-
-      image: '../../../assets/product-default.png',
-      price: '10.00',
-      collection: 'sci-fy',
-    },
-  ]
+  products: IProduct[] = products
 }

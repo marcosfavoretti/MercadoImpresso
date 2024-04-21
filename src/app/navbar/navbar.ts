@@ -5,7 +5,7 @@ export class navBarItens{
 
 export const navbarTopics: navBarItens[] = [
     {name:"Home", router:""},
-    {name:"Loja",router:""},
+    {name:"Loja",router:"loja"},
     {name:"Personalização",router:"project-upload"},
     {name:"Sobre nós",router:""},
     {name:"Fale Conosco",router:""}

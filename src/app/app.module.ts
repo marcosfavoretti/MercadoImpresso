@@ -27,10 +27,20 @@ import { SomeProductsGridComponent } from './land-page/some-products-grid/some-p
 import { OrcamentoProjectComponent } from './land-page/orcamento-project/orcamento-project.component';
 import { CarouselModule } from 'primeng/carousel';
 import { TagModule } from 'primeng/tag';
+import { PasswordModule } from 'primeng/password';
+import { CardModule } from 'primeng/card';
+import { RatingModule } from 'primeng/rating';
+
 import { CarouselCollectionComponent } from './project-section/carousel-collection/carousel-collection.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { CadastroUsuarioPageComponent } from './cadastro-usuario-page/cadastro-usuario-page.component';
+import { ShoppingPageComponent } from './shopping-page/shopping-page.component';
+import { ShoppingGridComponent } from './shopping-page/shopping-grid/shopping-grid.component';
+import { ShoppingItemInfoComponent } from './shopping-page/shopping-item-info/shopping-item-info.component';
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     ProjectSectionComponent,
     StlViewerComponent,
@@ -43,9 +53,17 @@ import { CarouselCollectionComponent } from './project-section/carousel-collecti
     CarouselMainComponent,
     SomeProductsGridComponent,
     OrcamentoProjectComponent,
-    CarouselCollectionComponent
+    CarouselCollectionComponent,
+    LoginPageComponent,
+    CadastroUsuarioPageComponent,
+    ShoppingPageComponent,
+    ShoppingGridComponent,
+    ShoppingItemInfoComponent
   ],
   imports: [
+    RatingModule,
+    CardModule,
+    PasswordModule,
     TagModule,
     CarouselModule,
     ToastModule,

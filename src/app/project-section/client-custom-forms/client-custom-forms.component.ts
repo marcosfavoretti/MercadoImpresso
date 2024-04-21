@@ -12,7 +12,7 @@ export class ClientCustomFormsComponent implements OnInit {
   colors = colors
   sliderValue: any
   file!: any
-  sliderLayer: any
+  sliderLayer: any = 5
   slideInfill: any
   selectColor?: string
   constructor(private file_service: FileStlHandleService, private router: Router) { }

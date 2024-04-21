@@ -1,5 +1,5 @@
 <footer style="background-color: rgb(50, 51, 52); overflow: hidden;">
-    <div class="position-relative row pt-5">
+    <div class="position-relative row pt-4">
         <div class="col-md-3 col-sm-12 mb-5">
             <div class="d-flex flex-column align-items-center justify-content-center">
                 <h1
@@ -7,7 +7,13 @@
                     Mercado
                     Impresso</h1>
                 <span class="text-center text-light text-responsive text-font">
-                    Sua jornada criativa começa aqui Impressão 3D sem complicações para você </span>
+                    Sua jornada criativa começa aqui, Impressão 3D sem complicações para você </span>
+                    <div class="row mt-3">
+                        <div class="col-3"><i class="pi pi-facebook text-white"></i></div>
+                        <div class="col-3"><i class="pi pi-twitter text-white"></i></div>
+                        <div class="col-3"><i class="pi pi-instagram text-white"></i></div>
+                        <div class="col-3"><i class="pi pi-youtube text-white"></i></div>
+                    </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-4 col-3">
@@ -17,8 +23,12 @@
                     <li class="m-2" style="cursor: pointer;">
                         <strong>Loja</strong>
                     </li>
-                    <li class="m-2" *ngFor="let item of topics" routerLink="/{{item.router}}" style="cursor: pointer;">
-                        {{item.name}}</li>
+                    <li class="m-2 text-start" style="cursor: pointer;">
+                        Seu Carrinho</li>
+                    <li class="m-2 text-start" style="cursor: pointer;">
+                        Promoções</li>
+                    <li class="m-2 text-start" style="cursor: pointer;">
+                        Mais comprados</li>
                 </ul>
             </div>
         </div>
@@ -29,7 +39,7 @@
                     <li class="m-2" style="cursor: pointer;">
                         <strong>Mais Links</strong>
                     </li>
-                    <li class="m-2" *ngFor="let item of topics" routerLink="/{{item.router}}" style="cursor: pointer;">
+                    <li class="m-2 text-start" *ngFor="let item of topics" routerLink="/{{item.router}}" style="cursor: pointer;">
                         {{item.name}}</li>
                 </ul>
             </div>

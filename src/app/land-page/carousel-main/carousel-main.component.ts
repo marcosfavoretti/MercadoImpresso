@@ -16,7 +16,7 @@ export class CarouselMainComponent {
   }
   item: ICarousel[] = [
     {
-      image: '../../../assets/item.png',
+      image: '../../../assets/land-page/item.png',
       desc: "Preço & Qualidade",
       uptittles: "conheça nossos produtos"
     },

@@ -8,12 +8,16 @@ import { MaterialService } from 'src/app/Services/MaterialService/material.servi
   templateUrl: './shopping-grid.component.html',
   styleUrls: ['./shopping-grid.component.css']
 })
-export class ShoppingGridComponent implements OnInit{
-  constructor(private material: MaterialService) {}
+export class ShoppingGridComponent implements OnInit {
+  constructor(private material: MaterialService) { }
   enable_material = this.material.materials
   products: IProduct[] = products
+  hover: { id: number | undefined } = {
+    id: undefined
+  }
 
   ngOnInit(): void {
     console.log(this.enable_material)
   }
+
 }

@@ -31,12 +31,13 @@ import { PasswordModule } from 'primeng/password';
 import { CardModule } from 'primeng/card';
 import { RatingModule } from 'primeng/rating';
 
-import { CarouselCollectionComponent } from './project-section/carousel-collection/carousel-collection.component';
+import { CarouselCollectionComponent } from './carousel-collection/carousel-collection.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CadastroUsuarioPageComponent } from './cadastro-usuario-page/cadastro-usuario-page.component';
 import { ShoppingPageComponent } from './shopping-page/shopping-page.component';
 import { ShoppingGridComponent } from './shopping-page/shopping-grid/shopping-grid.component';
 import { ShoppingItemInfoComponent } from './shopping-page/shopping-item-info/shopping-item-info.component';
+import { CarrinhoPageComponent } from './carrinho-page/carrinho-page.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ShoppingItemInfoComponent } from './shopping-page/shopping-item-info/sh
     CadastroUsuarioPageComponent,
     ShoppingPageComponent,
     ShoppingGridComponent,
-    ShoppingItemInfoComponent
+    ShoppingItemInfoComponent,
+    CarrinhoPageComponent
   ],
   imports: [
     RatingModule,

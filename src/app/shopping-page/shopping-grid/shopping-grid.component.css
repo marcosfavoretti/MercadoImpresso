@@ -3,9 +3,12 @@ ul li {
     aspect-ratio: 1/1;
     background-color: black;
     border-radius: 50%;
-    border: 1px gray solid;
 }
 
-::ng-deep .p-card{
+::ng-deep .p-card {
     cursor: pointer;
+}
+
+.btn-cart-hover:hover {
+    transform: scale(1.5, 1.5);
 }

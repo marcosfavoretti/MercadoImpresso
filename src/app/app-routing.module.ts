@@ -9,17 +9,20 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { CadastroUsuarioPageComponent } from './cadastro-usuario-page/cadastro-usuario-page.component';
 import { ShoppingPageComponent } from './shopping-page/shopping-page.component';
 import { ShoppingItemInfoComponent } from './shopping-page/shopping-item-info/shopping-item-info.component';
+import { CarrinhoPageComponent } from './carrinho-page/carrinho-page.component';
 
 
 const routes: Routes = [
-  { path: '', pathMatch:"full", redirectTo:"home" },
-  { path: 'project-upload', component:ProjectUploadPageComponent},
-  { path: 'project-upload/setup-project', component: ProjectSectionComponent, canActivate: [submittedProjectGuard]},
-  { path: 'home', component:LandPageComponent},
-  { path: 'login', component:LoginPageComponent},
-  { path: 'cadastro', component:CadastroUsuarioPageComponent},
-  {path: 'loja', component: ShoppingPageComponent},
-  {path: 'loja/item/:item', component: ShoppingItemInfoComponent}
+  { path: '', pathMatch: "full", redirectTo: "home" },
+  { path: 'project-upload', component: ProjectUploadPageComponent },
+  { path: 'project-upload/setup-project', component: ProjectSectionComponent, canActivate: [submittedProjectGuard] },
+  { path: 'home', component: LandPageComponent },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'cadastro', component: CadastroUsuarioPageComponent },
+  { path: 'loja', component: ShoppingPageComponent },
+  { path: 'loja/item/:item', component: ShoppingItemInfoComponent },
+  { path: 'carrinho', component: CarrinhoPageComponent }
+
 
 
 ];

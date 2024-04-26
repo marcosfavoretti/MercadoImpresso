@@ -16,6 +16,9 @@ export class CarouselCollectionComponent implements OnInit {
 
     }
   }
+  hover: { id: number | undefined } = {
+    id: undefined
+  }
   enable_material = this.material.materials
   carouselOptions: CarouselResponsiveOptions[] = [
 

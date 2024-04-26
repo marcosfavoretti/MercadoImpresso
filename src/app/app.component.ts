@@ -9,10 +9,10 @@ import { LoginService } from './Services/loginService/login.service';
 })
 export class AppComponent implements OnInit {
   title = 'Ecommerce3dPrinter';
-  constructor(private login: LoginService){}
+  constructor(private login: LoginService) { }
   async ngOnInit() {
-    await this.login.checkLogin()
     console.log('check login')
+    await this.login.checkLogin()
     AOS.init();
     console.log('init aos')
   }

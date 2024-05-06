@@ -15,20 +15,17 @@ export class ProjectUploadPageComponent implements OnInit {
   constructor(private router: Router, private upload: UploadService) { }
   progress: number = 0;
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     // console.log(localStorage.getItem('project'));
-    if (localStorage.getItem('project')) {
+    if (await this.upload.hasProject()) {
       this.goCustom();
     }
   }
 
   async onUpload(event: FileUploadEvent): Promise<void> {
-    this.upload.setProject(event.files[0]);
-    this.setLocalStorageProject(event.files[0]).then(() => {
-      this.goCustom();
-    });
     this.modal.close();
     this.progress = 0;
+    this.goCustom()
   }
 
   onProgress(event: FileProgressEvent): void {

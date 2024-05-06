@@ -34,8 +34,6 @@ export class FileStlHandleService {
     return this.fileChangeColor
   }
 
-
-
   private emitEvent(evet: EventEmitter<any>, value: any) {
     evet.emit(value)
   }

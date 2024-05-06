@@ -8,7 +8,7 @@
             <span class="text-center text-responsive "><strong>Selecione o arquivo ou arraste aqui!</strong></span>
             <span class="text-responsive mb-3 text-center">só aceitamos arquivos STL</span>
             <p-fileUpload name="file" styleClass="btn-outline-primary bg-white text-primary p-2 text-responsive"
-                mode="basic" [withCredentials]="true" url="http://localhost:3000/projects" accept=".stl"
+                mode="basic" [withCredentials]="true" url="http://localhost:3000/produtopersonalizado/newmodel" accept=".stl"
                 (onBeforeUpload)="beforeUpload($event)" (onProgress)="onProgress($event)" (onUpload)="onUpload($event)"
                 [auto]="true" chooseLabel="Upload"></p-fileUpload>
         </div>

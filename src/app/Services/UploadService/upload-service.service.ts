@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
+import { AxiosResponse } from 'axios';
+import { Modelo3D } from 'src/app/Interfaces/Modelo3d';
+import { axiosClient } from 'src/axios.client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadService {
-  private stlLoad : any = ""
-  private project: any
-  constructor() { }
-  setProject(project: any){
-    this.project = project
-  }
-  hasProject(){
-    return !!(this.project) || !!(localStorage.getItem("project"))
+ 
+  async hasProject(){
+    const project: Modelo3D = ( await axiosClient.get('/produtopersonalizado/getProjeto')).data
+    return project
   }
 }

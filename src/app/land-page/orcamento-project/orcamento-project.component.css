@@ -4,7 +4,6 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: start;
     background-image: url('../../../assets/land-page/background-project.png'); /* Caminho para sua imagem */
     background-size:  cover; /* Cobrir todo o elemento */
     background-repeat: no-repeat;

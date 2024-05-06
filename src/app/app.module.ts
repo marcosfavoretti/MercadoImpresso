@@ -30,6 +30,10 @@ import { TagModule } from 'primeng/tag';
 import { PasswordModule } from 'primeng/password';
 import { CardModule } from 'primeng/card';
 import { RatingModule } from 'primeng/rating';
+import { CascadeSelectModule } from 'primeng/cascadeselect';
+import { DropdownModule } from 'primeng/dropdown';
+import { SidebarModule } from 'primeng/sidebar';
+import { AvatarModule } from 'primeng/avatar';
 
 import { CarouselCollectionComponent } from './carousel-collection/carousel-collection.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -38,10 +42,10 @@ import { ShoppingPageComponent } from './shopping-page/shopping-page.component';
 import { ShoppingGridComponent } from './shopping-page/shopping-grid/shopping-grid.component';
 import { ShoppingItemInfoComponent } from './shopping-page/shopping-item-info/shopping-item-info.component';
 import { CarrinhoPageComponent } from './carrinho-page/carrinho-page.component';
+import { SideBarComponent } from './sideBar/sideBar.component';
 
 @NgModule({
-  declarations: [
-    
+  declarations: [	
     AppComponent,
     ProjectSectionComponent,
     StlViewerComponent,
@@ -60,9 +64,13 @@ import { CarrinhoPageComponent } from './carrinho-page/carrinho-page.component';
     ShoppingPageComponent,
     ShoppingGridComponent,
     ShoppingItemInfoComponent,
-    CarrinhoPageComponent
-  ],
+    CarrinhoPageComponent,
+      SideBarComponent
+   ],
   imports: [
+    AvatarModule,
+    SidebarModule,
+    CascadeSelectModule,
     RatingModule,
     CardModule,
     PasswordModule,
@@ -83,7 +91,8 @@ import { CarrinhoPageComponent } from './carrinho-page/carrinho-page.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

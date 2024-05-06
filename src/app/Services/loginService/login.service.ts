@@ -1,15 +1,17 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { axiosClient } from 'src/axios.client';
 import { UserInfo } from './Object/User';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor() { }
-  usuarioInfo: EventEmitter<UserInfo> = new EventEmitter<UserInfo>()
-
+  constructor(private router: Router) { }
+  usuarioInfoevent: EventEmitter<UserInfo> = new EventEmitter<UserInfo>()
+  usuarioInfo?: UserInfo
+  
   async auth({
     usuario,
     senha
@@ -23,16 +25,17 @@ export class LoginService {
     }, {
       withCredentials: true
     })).data
-    if (token) this.usuarioInfo.emit(await this.getUserInfo())
+    if (token){ 
+      this.usuarioInfoevent.emit(await this.getUserInfo())
+      this.router.navigate(['/home'])
+    }
   }
 
   async checkLogin() {
-    console.log('check login')
     try {
       const userInfo = await this.getUserInfo()
       if (!userInfo) throw new Error('Usuaio nõo esta autenticado')
-      this.usuarioInfo.emit(userInfo)
-      console.log('logado')
+      this.usuarioInfoevent.emit(userInfo)
     }
     catch (err) {
       return

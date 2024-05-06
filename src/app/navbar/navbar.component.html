@@ -13,9 +13,10 @@
                     </div>
                 </div>
                 <div class="w-auto bg-white h-100 d-flex align-items-center">
-                    <i class="p-2 pi pi-search"></i>
-                    <i class="p-2 pi pi-user" [value]="login_status? '' :'!'" pBadge [severity]="login_status? 'success' :'danger'"
-                        routerLink="/login" style="cursor: pointer;"></i>
+                    <div>
+                        <i class="p-2 pi pi-user" routerLink="/login" (click)="openSideBar()" style="cursor: pointer;"></i>
+                    </div>
+                   
                     <i class="p-2 pi pi-shopping-bag" pBadge value="2" routerLink="/carrinho"
                         style="cursor: pointer;"></i>
                 </div>
@@ -37,8 +38,8 @@
 </nav>
 
 <p-scrollTop styleClass="rounded-circle"></p-scrollTop>
-
-
+{{sideBarStt}}
+<app-sideBar  #sideBar></app-sideBar>
 
 <!-- <li *ngFor="let topic of topics" class="mb-2">
                                 <button class="btn btn-success" [routerLink]="topic.action"

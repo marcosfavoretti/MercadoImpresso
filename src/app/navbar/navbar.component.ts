@@ -1,33 +1,42 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { navbarTopics } from './navbar';
 import { LoginService } from '../Services/loginService/login.service';
 import { UserInfo } from '../Services/loginService/Object/User';
-
+import { BadgeDirective } from 'primeng/badge';
+import { Router } from '@angular/router';
+import { SideBarComponent } from '../sideBar/sideBar.component';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements AfterViewInit {
-  constructor(private loginService: LoginService) { }
+export class NavbarComponent implements OnInit {
+  constructor(private loginService: LoginService, private router: Router) { }
 
-  login_status?: UserInfo
-
-  menuisopen: boolean = false
+  usuario?: UserInfo
+  status: BadgeDirective['severity']
+  sideBarStt: boolean = false
   topics = navbarTopics
-
-  ngAfterViewInit(): void {
-    this.loginService.usuarioInfo.subscribe(userInfo => {
-      this.login_status = userInfo
+  @ViewChild('sideBar') sideBar !: SideBarComponent
+  ngOnInit(): void {
+    this.usuario = this.loginService.usuarioInfo
+    this.loginService.usuarioInfoevent.subscribe(userInfo => {
+      this.usuario = userInfo
     })
-  }
-  openMenu() {
-    return !this.menuisopen
+    this.isLog()
   }
 
-  isLog(): boolean {
-    const status = !!(this.login_status)
-    console.log(status)
-    return status
+  isLog():BadgeDirective['severity']{
+    if(!!this.usuario) return 'success'
+    else return 'danger'
   }
+  
+  openUserInfos(){
+    // if(!!this.usuario) this.router.navigate(['/home'])
+  }
+
+  openSideBar() {
+    this.sideBar.sideBarHandle()
+  }
+
 }

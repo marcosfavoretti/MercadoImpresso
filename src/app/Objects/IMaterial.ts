@@ -1,5 +1,5 @@
 export interface IMaterial {
     name: string
-    id: number
+    id: string
     color: string
 }

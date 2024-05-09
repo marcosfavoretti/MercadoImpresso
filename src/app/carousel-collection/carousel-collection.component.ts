@@ -10,7 +10,7 @@ import { products } from 'src/app/shopping-page/products';
   templateUrl: './carousel-collection.component.html',
   styleUrls: ['./carousel-collection.component.css']
 })
-export class CarouselCollectionComponent implements OnInit {
+export class CarouselCollectionComponent{
   constructor(private material: MaterialService) {
     Carousel.prototype.onTouchMove = () => {
 
@@ -34,8 +34,5 @@ export class CarouselCollectionComponent implements OnInit {
     },
   ];
 
-  ngOnInit(): void {
-    console.log(window.innerWidth)
-  }
   products: IProduct[] = products
 }

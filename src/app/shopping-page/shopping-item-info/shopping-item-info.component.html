@@ -11,7 +11,7 @@
                 <h1 class="mb-4">{{currentItem.name}}</h1>
                 <h2 class="tittle-responsive mb-4">R${{currentItem.price}}</h2>
                 <!-- mudar para pipe o display do nome e material -->
-                <span class="mb-2">Material: {{currentMaterial? currentMaterial?.name +"/"  : "None"}}{{currentMaterial?.color}}</span>
+                <!-- <span class="mb-2">Material: {{currentMaterial? currentMaterial?.name +"/"  : "None"}}{{currentMaterial?.color}}</span> -->
 
                 <ul class="d-flex list-inline gap-1 align-items-center">
                     <li *ngFor="let mat of enable_material"

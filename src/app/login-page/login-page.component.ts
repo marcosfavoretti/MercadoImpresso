@@ -13,11 +13,8 @@ export class LoginPageComponent {
   constructor(private loginService: LoginService) { }
   async onSubmit(formulario: NgForm) {
     if (!formulario.valid) {
-      console.log('formulario nao é valido')
       return
     }
-    console.log(formulario)
-    console.log(formulario)
     await this.loginService.auth({
       senha: formulario.controls['senha'].value,
       usuario: formulario.controls['usuario'].value

@@ -10,14 +10,15 @@ import { CadastroUsuarioPageComponent } from './cadastro-usuario-page/cadastro-u
 import { ShoppingPageComponent } from './shopping-page/shopping-page.component';
 import { ShoppingItemInfoComponent } from './shopping-page/shopping-item-info/shopping-item-info.component';
 import { CarrinhoPageComponent } from './carrinho-page/carrinho-page.component';
+import { authGuardGuard } from './guards/auth-guard.guard';
 
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', pathMatch: "full", redirectTo: "home" },
-  { path: 'project-upload', component: ProjectUploadPageComponent },
+  { path: 'project-upload', component: ProjectUploadPageComponent, canActivate: [authGuardGuard] },
   { path: 'project-upload/setup-project', component: ProjectSectionComponent, canActivate: [submittedProjectGuard] },
   { path: 'home', component: LandPageComponent },
-  { path: 'login', component: LoginPageComponent },
+  { path: 'login', component: LoginPageComponent,canActivate: [authGuardGuard]  },
   { path: 'cadastro', component: CadastroUsuarioPageComponent },
   { path: 'loja', component: ShoppingPageComponent },
   { path: 'loja/item/:item', component: ShoppingItemInfoComponent },

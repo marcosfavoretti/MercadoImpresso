@@ -15,8 +15,6 @@ export class CadastroUsuarioPageComponent {
       console.log('formulario nao é valido')
       return
     }
-    console.log(formulario)
-    console.log(formulario)
     await this.createUser({
       senha: formulario.controls['senha'].value,
       nome: formulario.controls['usuario'].value,

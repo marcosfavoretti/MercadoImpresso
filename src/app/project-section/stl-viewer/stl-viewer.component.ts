@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 import { OrbitControls } from '@three-ts/orbit-controls'
 import { FileStlHandleService } from '../service/file-stl-handle.service';
+import { UploadService } from 'src/app/Services/UploadService/upload-service.service';
 
 @Component({
   selector: 'app-stl-viewer',
@@ -24,7 +25,7 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
   file: any
   @ViewChild('rendererContainer') rendererContainer!: ElementRef; // Referência ao contêiner do renderizador
 
-  constructor(private file_service: FileStlHandleService) { }
+  constructor(private file_service: FileStlHandleService, private uploadService: UploadService) { }
 
   ngOnInit(): void {
     this.file_service.makeSubscription().subscribe(
@@ -34,7 +35,6 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
     )
     this.file_service.makeColorSubscription().subscribe(
       newColor => {
-        console.log(newColor.rgb)
         this.changeColor(new THREE.Color(`rgb(${newColor.rgb.r}, ${newColor.rgb.g}, ${newColor.rgb.b})`))
       }
     )
@@ -45,7 +45,6 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
   }
 
   changeColor(color: THREE.Color) {
-    console.log('Mudando de cor...');
 
     if (this.my_object && this.my_object.material) {
       // Verifica se o material é uma instância de THREE.MeshBasicMaterial
@@ -61,43 +60,17 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
   }
 
   addModelOnScene(geometry: THREE.BufferGeometry, material: THREE.Material) {
-    // console.log(material)
     this.my_object = new THREE.Mesh(geometry, material);
     this.my_object.scale.set(0.01, 0.01, 0.01);
     this.scene.add(this.my_object);
     this.animation();
-
   }
-  private getBlob() {
-    // Recupere os dados do arquivo do localStorage
-    const storedData = localStorage.getItem('project');
-    if (storedData) {
-      // Analise os dados JSON para obter os detalhes do arquivo
-      const fileData = JSON.parse(storedData);
+  
 
-      // Converta os dados binários de volta para um array de bytes
-      const byteArray = new Uint8Array(fileData.data);
-
-      // Crie um Blob com os dados binários
-      const blob = new Blob([byteArray], { type: fileData.type });
-
-      // Crie um URL de Blob para o Blob criado
-      const blobUrl = URL.createObjectURL(blob);
-
-      return blobUrl;
-    } else {
-      console.error('Nenhum projeto encontrado no localStorage.');
-      return null;
-    }
-  }
-
-  putDefaultObject() {
-    const blob = this.getBlob()
-    if (!blob) throw new Error("sem arquivo")
-
-    this.loader.load(blob, (geometry) => {
-      // console.log(geometry)
-      // const material = new THREE.MeshBasicMaterial(); // vermelho
+  async putDefaultObject() {
+    const project = await this.uploadService.hasProject()
+    if (!project.remote_url) throw new Error("sem arquivo")
+    this.loader.load(project.remote_url, (geometry) => {
       const material = new THREE.MeshNormalMaterial()
       this.addModelOnScene(geometry, material)
     });
@@ -107,14 +80,9 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
   initializeScene() {
     const width = window.innerWidth;
     const height = window.innerHeight;
-    console.log()
     this.scene = new THREE.Scene();
-
     this.camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 10);
     this.camera.position.z = 2;
-    // console.log((this.rendererContainer.nativeElement as HTMLElement).offsetWidth)
-    // console.log((this.rendererContainer.nativeElement as HTMLElement).offsetHeight)
-
     this.renderer = new THREE.WebGLRenderer({ antialias: true });
     if (width < 768) {
       this.renderer.setSize((this.rendererContainer.nativeElement as HTMLElement).offsetWidth, (this.rendererContainer.nativeElement as HTMLElement).offsetWidth);
@@ -124,25 +92,19 @@ export class StlViewerComponent implements OnInit, AfterViewInit {
 
     }
     this.renderer.setClearColor(0xECECEC); // Definir o fundo como branco
-
     this.rendererContainer.nativeElement.appendChild(this.renderer.domElement);
-
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableDamping = true; // Suaviza o movimento da câmera
     this.controls.dampingFactor = 0.25; // Configura a taxa de suavização
-
     this.putDefaultObject()
-
     //Iniciar a animação
   }
 
   animation() {
     if (!this.animation_controll.current_Pause && !this.animation_controll.isPause) {
-      // this.my_object.rotation.x += 0.01
       this.my_object.rotation.y += 0.01
     }
     requestAnimationFrame(() => this.animation());
-
     this.controls.update(); // Atualiza os controles da câmera
     this.renderer.render(this.scene, this.camera);
   }

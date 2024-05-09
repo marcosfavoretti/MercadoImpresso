@@ -11,9 +11,8 @@ export class AppComponent implements OnInit {
   title = 'Ecommerce3dPrinter';
   constructor(private login: LoginService) { }
   async ngOnInit() {
-    console.log('check login')
     await this.login.checkLogin()
-    AOS.init();
     console.log('init aos')
+    AOS.init();
   }
 }

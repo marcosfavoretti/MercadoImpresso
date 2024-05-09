@@ -1,57 +1,47 @@
-<div class="form-group bg-white p-4 rounded overflow-hidden">
-    <div class="row mb-3">
-        <div class="w-100 d-flex justify-content-end">
-            <button class="btn btn-group" (click)="closeProject()"><i
-                    class="pi pi-times-circle text-danger"></i></button>
-        </div>
+<form #customForm="ngForm" (submit)="onSubmit(customForm)" class="form-group bg-white p-4 rounded overflow-hidden">
+    <div class="row mb-2">
         <div class="col-10">
             <div class="p-float-label">
-                <input [value]="getFileName()" pInputText id="Project-Name" class="form-control" />
-                <label for="Project-Name">Project Name </label>
+                <input required [(ngModel)]="customizacoes.nome" name="nome" [value]="getFileName()" pInputText id="Project-Name" class="form-control text-center border-0" />
             </div>
         </div>
         <div class="col-2 d-flex align-items-center justify-content-center">
             <div class="pi pi-info-circle" ngbTooltip="Nome que sera dado para seu projeto"></div>
         </div>
         <div class="col-12 mb-4 mt-4">
-            <h3 class="tittle-responsive">R$ 00,00</h3>
+            <input disabled class="tittle-responsive bg-white p-2 rounded border-0 fw-bold"  name="price" value="{{ customizacoes['preco'] | currency:'BRL':'symbol':'1.2-2'}}">
         </div>
         <div class="col-12 d-flex align-items-center justify-content-center">
-            <button class="btn btn-group btn-dark w-100  p-2 d-flex align-items-center justify-content-center">Add to
-                Shopping Bag</button>
+            <button type="submit" class="btn btn-group btn-dark w-100 p-2 d-flex align-items-center justify-content-center">Add to
+                Shopping Bag
+            </button>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-2" >
         <h1 class="tittle-responsive mb-3">Configuração do Modelo</h1>
-
-        <span class="text-center text-secondary">Color: {{selectColor??""}}</span>
-        <div class="col-12 mb-4" style="display: flex; align-items: start; overflow-x: auto;">
-            <div *ngFor="let color of colors" class="d-flex p-2">
-                <input (click)="setNewColor(color)" [(ngModel)]="selectColor" class="radio-input" type="radio"
-                    name="colors" [value]="color.color">
-                <span class="text-secondary text-responsive">{{color.color}}</span>
-            </div>
-        </div>
+        <span class="text-start text-secondary">Material: {{selectColor??""}}</span>
+        <p-dropdown  name="material" [options]="materials" styleClass="input-group" [(ngModel)]="customizacoes.material"
+         optionLabel="material" placeholder="Selecione o material..." [required]='true'>
+            <ng-template pTemplate="selectedItem">
+                <div class="d-flex align-items-center justify-content-center" *ngIf="customizacoes?.material?.name !== 'default'">
+                    <div class="tag-circle" [ngStyle]="{ 'background-color': getColor(customizacoes.material)  }"></div>
+                    <div class="p-2">{{ getColor(customizacoes.material) }}</div>                
+                </div>
+            </ng-template>
+            <ng-template let-material pTemplate="item">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="tag-circle" [ngStyle]="{ 'background-color': material.color }"></div>
+                    <div class="p-2">{{ material.name }}</div>
+                </div>
+            </ng-template>
+        </p-dropdown>
     </div>
 
-
-    <div class="row">
-        <div class="col-10 mb-4">
-            <div class="p-float-label">
-                <input pInputText id="material" class="form-control" />
-                <label for="material">Material</label>
-            </div>
-        </div>
-        <div class="col-2 mb-4 d-flex align-items-center justify-content-center">
-            <div class="pi pi-info-circle" ngbTooltip="material que sera usado no seu projeto"></div>
-        </div>
-    </div>
-
-    <div class="row">
+    <div class="row mb-2">
         <div class="col-10 mb-4 ">
-            <label for="slider" class="mb-2 text-secondary">Infill - {{!sliderLayer ? 0 : sliderLayer }}%</label>
-            <p-slider [min]="5" name="slider" id="slider" [(ngModel)]="sliderLayer"></p-slider>
+            <label for="slider"  class="mb-2 text-secondary">Infill - {{customizacoes.preenchimento }}%</label>
+            <p-slider [min]="5" required name="slider" id="slider" [(ngModel)]="customizacoes.preenchimento"></p-slider>
         </div>
         <div class="col-2 mb-4 d-flex align-items-center justify-content-center">
             <div class="pi pi-info-circle" ngbTooltip="preenchimento do modelo">
@@ -59,10 +49,10 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-2">
         <div class="col-10 mb-4">
-            <label for="layer" class="mb-2 text-secondary">Layer({{slideInfill}}mm)</label>
-            <p-slider [max]="5" [min]="1" name="slider-layer" id="slider" [(ngModel)]="slideInfill"></p-slider>
+            <label for="layer" class="mb-2 text-secondary">Layer({{customizacoes.camada}}mm)</label>
+            <p-slider [max]="5" required [min]="2" name="slider-layer" id="slider" [(ngModel)]="customizacoes.camada"></p-slider>
         </div>
         <div class="col-2 mb-4 d-flex align-items-center justify-content-center">
             <div class="pi pi-info-circle"
@@ -74,7 +64,7 @@
     <div class="row">
         <div class="col-10 mb-4">
             <div class="p-float-label">
-                <textarea pInputText id="notes" class="form-control"></textarea>
+                <textarea [(ngModel)]="customizacoes.notas" name="desc" pInputText id="notes" class="form-control"></textarea>
                 <label for="notes">Notes about the project</label>
             </div>
         </div>
@@ -83,14 +73,4 @@
         </div>
     </div>
 
-    <!-- <div class="row">
-        <div class="col-12">
-            <div style="display: flex; align-items: center; justify-content: center;">
-                <p-button icon="pi pi-check-circle" [rounded]="true" [text]="true" severity="success" label="Calculate"
-                    iconPos="right" class="rounded"></p-button>
-            </div>
-        </div>
-    </div> -->
-    <!-- <h1>Current Value</h1>
-    <h2>R$ 70,90</h2> -->
-</div>
+</form>

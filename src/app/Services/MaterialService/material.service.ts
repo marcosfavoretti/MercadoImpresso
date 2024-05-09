@@ -8,27 +8,27 @@ export class MaterialService {
   materials: IMaterial[] = [
     {
       color: 'blue',
-      id: 1,
+      id: '1',
       name: "abs"
     },
     {
       color: 'red',
-      id: 1,
+      id: '2',
       name: "abs"
     },
     {
       color: 'purple',
-      id: 1,
+      id: '3',
       name: "abs"
     },
     {
       color: 'black',
-      id: 1,
+      id: '4',
       name: "abs"
     },
     {
       color: 'white',
-      id: 1,
+      id: '5',
       name: "abs"
     }
   ]

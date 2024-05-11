@@ -25,8 +25,8 @@ export class ClientCustomFormsComponent implements OnInit {
   projeto!: Modelo3D
   materials!: IMaterial[]
   selectedMaterial!: IMaterial
-  customizacoes : Customizacoes = {
-    camada: 2,
+  customizacoes: Customizacoes = {
+    camada: 1,
     preenchimento: 5,
     nome: 'default',
     notas: undefined,
@@ -34,19 +34,19 @@ export class ClientCustomFormsComponent implements OnInit {
   }
 
   constructor(private uploadService: UploadService,
-     private file_service: FileStlHandleService,
-       private materialService: MaterialService) { }
+    private file_service: FileStlHandleService,
+    private materialService: MaterialService) { }
 
-  onSubmit(customForm: NgForm){
-    if(!customForm.valid){
+  onSubmit(customForm: NgForm) {
+    if (!customForm.valid) {
       console.log('formulario nao é valido')
       return
     }
     console.log(customForm)
   }
 
-  getColor(material: IMaterial | undefined){  
-    if(!material) return
+  getColor(material: IMaterial | undefined) {
+    if (!material) return
     return material.color
   }
 
@@ -59,17 +59,17 @@ export class ClientCustomFormsComponent implements OnInit {
     this.projeto = await this.uploadService.hasProject()
     this.customizacoes = {
       ...this.customizacoes,
-      nome : this.projeto.nome
+      nome: this.projeto.nome
     }
     this.materials = await this.materialService.materials
   }
-  
-  getMaterial(){
-    if(!this.materials.length) return
-    return this.materials.map(material=> material.name)
+
+  getMaterial() {
+    if (!this.materials.length) return
+    return this.materials.map(material => material.name)
   }
 
-  
+
 
   setNewColor(color: any) {
     this.file_service.setCurrentColor(color)

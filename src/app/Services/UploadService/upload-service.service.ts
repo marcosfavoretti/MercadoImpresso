@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AxiosResponse } from 'axios';
-import { Modelo3D } from 'src/app/Interfaces/Modelo3d';
+import { Modelo3D } from 'src/app/Types/Modelo3d';
 import { axiosClient } from 'src/axios.client';
 
 @Injectable({

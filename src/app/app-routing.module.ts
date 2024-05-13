@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { ProjectSectionComponent } from './project-section/project-section.component';
-import { ProjectUploadPageComponent } from './project-upload-page/project-upload-page.component';
-import { submittedProjectGuard } from './guards/submitted-project.guard';
-import { LandPageComponent } from './land-page/land-page.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { CadastroUsuarioPageComponent } from './cadastro-usuario-page/cadastro-usuario-page.component';
-import { ShoppingPageComponent } from './shopping-page/shopping-page.component';
-import { ShoppingItemInfoComponent } from './shopping-page/shopping-item-info/shopping-item-info.component';
-import { CarrinhoPageComponent } from './carrinho-page/carrinho-page.component';
-import { authGuardGuard } from './guards/auth-guard.guard';
+import { ProjectSectionComponent } from './Components/project-section/project-section.component';
+import { ProjectUploadPageComponent } from './Components/project-upload-page/project-upload-page.component';
+import { submittedProjectGuard } from './Guards/submitted-project.guard';
+import { LandPageComponent } from './Components/Home/land-page.component';
+import { LoginPageComponent } from './Components/login-page/login-page.component';
+import { CadastroUsuarioPageComponent } from './Components/cadastro-usuario-page/cadastro-usuario-page.component';
+import { ShoppingPageComponent } from './Components/shopping-page/shopping-page.component';
+import { ShoppingItemInfoComponent } from './Components/shopping-item-info/shopping-item-info.component';
+import { authGuardGuard } from './Guards/auth-guard.guard';
+import { CarrinhoPageComponent } from './Components/carrinho-page/carrinho-page.component';
 
 
 export const routes: Routes = [
@@ -23,8 +23,6 @@ export const routes: Routes = [
   { path: 'loja', component: ShoppingPageComponent },
   { path: 'loja/item/:item', component: ShoppingItemInfoComponent },
   { path: 'carrinho', component: CarrinhoPageComponent }
-
-
 
 ];
 

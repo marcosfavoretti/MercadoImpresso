@@ -1,36 +1,27 @@
 import { Injectable } from '@angular/core';
-import { IMaterial } from 'src/app/Objects/IMaterial';
+import { Material } from 'src/app/Types/Material';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MaterialService {
-  materials: IMaterial[] = [
-    {
-      color: 'blue',
-      id: '1',
-      name: "abs"
-    },
-    {
-      color: 'red',
-      id: '2',
-      name: "abs"
-    },
-    {
-      color: 'purple',
-      id: '3',
-      name: "abs"
-    },
-    {
-      color: 'black',
-      id: '4',
-      name: "abs"
-    },
-    {
-      color: 'white',
-      id: '5',
-      name: "abs"
-    }
+  materials: Material[] = [
+  {
+    id: 1,
+    nome: 'abs',
+    disponivel: true,
+    cor: 'red',
+    preco: 76.60,
+    densidade: 1.06
+  },
+  {
+    id: 2,
+    nome: 'tritan',
+    disponivel: true,
+    cor: 'purple',
+    preco: 86.60,
+    densidade: 2.00
+  }
   ]
   constructor() { }
 }

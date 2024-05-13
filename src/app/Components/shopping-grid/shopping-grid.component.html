@@ -1,0 +1,40 @@
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-md-3 col-6  my-2 d-flex align-items-center justify-content-center"
+            *ngFor="let product of products">
+            <p-card (mouseleave)="hover.id = undefined" (mouseenter)="hover.id=product.id" class="position-relative"
+                [routerLink]="'/loja/item/'+product.id">
+                <div *ngIf="hover.id === product.id"
+                    class="position-absolute w-100 h-100 top-0 rounded d-flex align-items-center justify-content-center"
+                    style="left: 0;background-color: rgba(172, 169, 169, 0.348);">
+                    <div class="d-flex bg-white w-auto rounded-5 p-3">
+                        <button
+                            class="btn btn-cart-hover btn-group  p-3 d-flex align-items-center justify-content-center">
+                            <i class="pi pi-shopping-cart "></i>
+                        </button>
+                        <button class="btn btn-cart-hover btn-group  d-flex align-items-center justify-content-center">
+                            <i class="pi pi-eye"></i>
+                        </button>
+                    </div>
+
+                </div>
+                <div class="rounded"
+                    style="background: linear-gradient(to bottom, rgb(217, 217, 217) 50%, transparent 50%);">
+                    <div>
+                        <img src="{{product.image}}" alt="" class="w-100 h-100 object-fit-cover">
+                    </div>
+                </div>
+                <ng-template pTemplate="footer">
+                    <div class="d-flex flex-column">
+                        <span class="fw-bold text-responsive">{{product.name}}</span>
+                        <ul class="d-flex list-inline gap-1 align-items-center h-100">
+                            <li *ngFor="let mat of enable_material"
+                                [ngStyle]="mat.cor ? {'background-color': mat.cor} : {}"></li>
+                        </ul>
+                        <span class="fw-bold ">R${{product.price}}</span>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+    </div>
+</div>

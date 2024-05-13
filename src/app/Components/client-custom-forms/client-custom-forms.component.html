@@ -19,8 +19,8 @@
             </div>
         </div>
         <div class="col-12 d-flex align-items-center justify-content-center">
-            <button type="submit" class="btn btn-group btn-dark w-100 p-2 d-flex align-items-center justify-content-center">Add to
-                Shopping Bag
+            <button type="submit" class="btn btn-group btn-dark w-100 p-2 d-flex align-items-center justify-content-center">
+                Adicionar ao carrinho<i class="pi pi-shopping-cart px-2"></i>
             </button>
         </div>
     </div>
@@ -47,7 +47,7 @@
 
     <div class="row mb-2">
         <div class="col-10 mb-4 ">
-            <label for="slider"  class="mb-2 text-secondary">Infill - {{customizacoes.preenchimento }}%</label>
+            <label for="slider"  class="mb-2 text-secondary">Preenchimento({{customizacoes.preenchimento }}%)</label>
             <p-slider (onSlideEnd)="someChange(customForm)" [min]="5" required name="preenchimento" id="preenchimento" [(ngModel)]="customizacoes.preenchimento"></p-slider>
         </div>
         <div class="col-2 mb-4 d-flex align-items-center justify-content-center">
@@ -58,7 +58,7 @@
 
     <div class="row mb-2">
         <div class="col-10 mb-4">
-            <label for="layer" class="mb-2 text-secondary">Layer({{customizacoes.camada}}mm)</label>
+            <label for="layer" class="mb-2 text-secondary">Camadas({{customizacoes.camada}}mm)</label>
             <p-slider (onSlideEnd)="someChange(customForm)" [max]="5" required [min]="1" name="slider-layer" id="slider" [(ngModel)]="customizacoes.camada"></p-slider>
         </div>
         <div class="col-2 mb-4 d-flex align-items-center justify-content-center">

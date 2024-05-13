@@ -22,7 +22,7 @@ export const routes: Routes = [
   { path: 'cadastro', component: CadastroUsuarioPageComponent },
   { path: 'loja', component: ShoppingPageComponent },
   { path: 'loja/item/:item', component: ShoppingItemInfoComponent },
-  { path: 'carrinho', component: CarrinhoPageComponent }
+  // { path: 'carrinho', component: CarrinhoPageComponent }
 
 ];
 

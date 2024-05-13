@@ -4,7 +4,7 @@
       <p-avatar [label]="usuario.nome[0]" styleClass="mr-2 mb-3" size="xlarge" shape="circle"></p-avatar>
       <h1 class="text-responsive">Bem vindo, {{getUserName()}}</h1>
       <h2 class="text-responsive">{{getUserEmail()}}</h2>
-      <button class="btn btn-group btn-danger justify-content-center d-flex align-items-center p-2 mt-3"><i
+      <button (click)="logout()" class="btn btn-group btn-danger justify-content-center d-flex align-items-center p-2 mt-3"><i
           class="pi pi-sign-out p-2"></i></button>
     </div>
   </div>

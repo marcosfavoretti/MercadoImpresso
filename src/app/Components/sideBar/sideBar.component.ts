@@ -9,15 +9,17 @@ import { UserInfo } from '../../Services/loginService/Object/User';
 })
 export class SideBarComponent implements OnInit {
   usuario!: UserInfo
-  constructor(private userioService: LoginService) { }
+  constructor(private loginService: LoginService) { }
   openSideBar: boolean = false
   
   async ngOnInit() {
-    this.userioService.usuarioInfoevent.subscribe(
+    this.loginService.usuarioInfoevent.subscribe(
       (data)=> this.usuario = data
     )
   }
-
+  logout(){
+      this.loginService.logout()
+  }
   sideBarHandle(){
     this.openSideBar = !this.openSideBar
   }

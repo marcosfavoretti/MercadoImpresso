@@ -2,16 +2,21 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { axiosClient } from 'src/axios.client';
 import { UserInfo } from './Object/User';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private cookieService: CookieService) { }
   usuarioInfoevent: EventEmitter<UserInfo> = new EventEmitter<UserInfo>()
   usuarioInfo?: UserInfo
-  
+  logout(){
+     this.cookieService.delete('token' , '/', 'mercadoimpressoapi.azurewebsites.net')
+    this.router.navigate(['home'])
+    console.log('logout')
+  }
   async auth({
     usuario,
     senha
@@ -30,7 +35,7 @@ export class LoginService {
       this.router.navigate(['/home'])
     }
   }
-
+  
   async checkLogin() {
     try {
       const userInfo = await this.getUserInfo()

@@ -7,17 +7,15 @@ export const products: Product[] = [
     image: '../../../assets/product-default.png',
     price: '10.00',
     collection: 'sci-fy',
-    desc: 'oadhadnasldanwdkalnsldalwkdmalksdmalwkdmakl',
+    desc: 'alguma desc',
   },
   {
     id: 2,
-
     name: 'produto 12',
-
     image: '../../../assets/product-default.png',
     price: '10.00',
     collection: 'sci-fy',
-    desc: 'oadhadnasldanwdkalnsldalwkdmalksdmalwkdmakl'
+    desc: 'alguma desc'
 
   },
   {
@@ -28,7 +26,7 @@ export const products: Product[] = [
     image: '../../../assets/product-default.png',
     price: '10.00',
     collection: 'sci-fy',
-    desc: 'oadhadnasldanwdkalnsldalwkdmalksdmalwkdmakl'
+    desc: 'alguma desc'
 
   },
   {
@@ -39,7 +37,7 @@ export const products: Product[] = [
     image: '../../../assets/product-default.png',
     price: '10.00',
     collection: 'sci-fy',
-    desc: 'oadhadnasldanwdkalnsldalwkdmalksdmalwkdmakl'
+    desc: 'alguma desc'
 
   },
   {
@@ -50,7 +48,7 @@ export const products: Product[] = [
     image: '../../../assets/product-default.png',
     price: '10.00',
     collection: 'sci-fy',
-    desc: 'oadhadnasldanwdkalnsldalwkdmalksdmalwkdmakl'
+    desc: 'alguma desc'
 
   },
   {
@@ -61,7 +59,7 @@ export const products: Product[] = [
     image: '../../../assets/product-default.png',
     price: '10.00',
     collection: 'sci-fy',
-    desc: 'oadhadnasldanwdkalnsldalwkdmalksdmalwkdmakl'
+    desc: 'alguma desc'
 
   }, {
     id: 7,
@@ -71,7 +69,7 @@ export const products: Product[] = [
     image: '../../../assets/product-default.png',
     price: '10.00',
     collection: 'sci-fy',
-    desc: 'oadhadnasldanwdkalnsldalwkdmalksdmalwkdmakl'
+    desc: 'alguma desc'
 
   }, {
     id: 8,
@@ -80,7 +78,7 @@ export const products: Product[] = [
     image: '../../../assets/product-default.png',
     price: '10.00',
     collection: 'sci-fy',
-    desc: 'oadhadnasldanwdkalnsldalwkdmalksdmalwkdmakl'
+    desc: 'alguma desc'
 
   },
 ]

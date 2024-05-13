@@ -43,7 +43,8 @@ import { CarouselCollectionComponent } from './Components/carousel-collection/ca
 import { CarouselMainComponent } from './Components/carousel-main/carousel-main.component';
 import { CarrinhoPageComponent } from './Components/carrinho-page/carrinho-page.component';
 import { PriceCheckerDirective } from './Diretives/price-checker/price-checker.directive';
-
+import {CookieService} from "ngx-cookie-service";
+import { CardTamplateComponent } from './Components/card-tamplate/card-tamplate.component'
 @NgModule({
   declarations: [	
     PriceCheckerDirective,
@@ -66,7 +67,8 @@ import { PriceCheckerDirective } from './Diretives/price-checker/price-checker.d
     ShoppingGridComponent,
     ShoppingItemInfoComponent,
     CarrinhoPageComponent,
-      SideBarComponent
+      SideBarComponent,
+      CardTamplateComponent
    ],
   imports: [
     AvatarModule,
@@ -95,7 +97,7 @@ import { PriceCheckerDirective } from './Diretives/price-checker/price-checker.d
     NgbModule,
     DropdownModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

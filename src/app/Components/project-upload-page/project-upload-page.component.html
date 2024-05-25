@@ -5,14 +5,24 @@
         <div class="bg-white w-75 h-75 p-2 rounded d-flex flex-column align-items-center justify-content-center"
             style="border-style: dashed; border-spacing: 12px; border-color: rgb(197, 195, 195); border-width: 2px;">
             <i class="pi mb-2 pi-cloud-upload text-secondary" style="font-size: 30px;"></i>
-            <span class="text-center text-responsive "><strong>Selecione o arquivo ou arraste aqui!</strong></span>
+            <span class="text-center text-responsive"><strong>Selecione o arquivo ou arraste aqui!</strong></span>
             <span class="text-responsive mb-3 text-center">só aceitamos arquivos STL</span>
-            <p-fileUpload name="file" styleClass="btn-outline-primary bg-white text-primary p-2 text-responsive"
-                mode="basic" [withCredentials]="true" url="https://mercadoimpressoapi.azurewebsites.net/produtopersonalizado/newmodel" accept=".stl"
-                (onBeforeUpload)="beforeUpload($event)" (onProgress)="onProgress($event)" (onUpload)="onUpload($event)"
-                [auto]="true" chooseLabel="Upload"></p-fileUpload>
+            <p-fileUpload 
+                name="file" 
+                styleClass="btn-outline-primary bg-white text-primary p-2 text-responsive"
+                mode="basic" 
+                [withCredentials]="true" 
+                [url]="sever + '/produtopersonalizado'" 
+                accept=".stl"
+                (onError)="onErro()"
+                (onBeforeUpload)="beforeUpload($event)" 
+                (onProgress)="onProgress($event)" 
+                (onUpload)="onUpload($event)"
+                [auto]="true" 
+                chooseLabel="Upload">
+            </p-fileUpload>
         </div>
     </div>
 </div>
-
+<app-modal-warning [header]="'Falha no Upload'" [body]="'Tivemos problemas com o upload do seu arquivo. Por favor tente mais tarde!'" #warningModal></app-modal-warning>
 <app-modal-upload [progress]="progress" #uploadModal></app-modal-upload>

@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
   constructor(private login: LoginService) { }
   async ngOnInit() {
     await this.login.checkLogin()
-    console.log('init aos')
     AOS.init();
   }
 }

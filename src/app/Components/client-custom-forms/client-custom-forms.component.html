@@ -1,4 +1,4 @@
-<form #customForm="ngForm" (submit)="onSubmit(customForm)" class="form-group bg-white p-4 rounded overflow-hidden">
+<form #customForm="ngForm"  class="form-group bg-white p-4 rounded overflow-hidden">
     <div class="row mb-2">
         <div class="col-10">
             <div class="p-float-label">
@@ -81,3 +81,5 @@
     </div>
 
 </form>
+
+<app-modal-warning [header]="'Dica:'" [body]="'para calcular o preço primeiro selecione o material'" #warningModal></app-modal-warning>

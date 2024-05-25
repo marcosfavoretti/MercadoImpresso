@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { FileBeforeUploadEvent, FileProgressEvent, FileUploadEvent } from 'primeng/fileupload';
 import { ModalUploadComponent } from '../modal-upload/modal-upload.component';
 import { UploadService } from '../../Services/UploadService/upload-service.service';
-import { axiosClient } from 'src/axios.client';
+import { configfile } from 'src/configfile';
+import { ModalWarningComponent } from '../modal-warning/modal-warning.component';
 
 @Component({
   selector: 'app-project-upload-page',
@@ -11,7 +12,10 @@ import { axiosClient } from 'src/axios.client';
   styleUrls: ['./project-upload-page.component.css']
 })
 export class ProjectUploadPageComponent implements OnInit {
+  sever = configfile.sever
   @ViewChild('uploadModal') modal!: ModalUploadComponent;
+  @ViewChild('warningModal') modalwarning!: ModalWarningComponent;
+
   constructor(private router: Router, private upload: UploadService) { }
   progress: number = 0;
 
@@ -21,7 +25,10 @@ export class ProjectUploadPageComponent implements OnInit {
       this.goCustom();
     }
   }
-
+  async onErro(){
+      this.modal.close()
+      this.modalwarning.open()
+  }
   async onUpload(event: FileUploadEvent): Promise<void> {
     this.modal.close();
     this.progress = 0;
@@ -29,12 +36,10 @@ export class ProjectUploadPageComponent implements OnInit {
   }
 
   onProgress(event: FileProgressEvent): void {
-    console.log(`progress ${event.progress}`)
     this.progress = event.progress;
   }
 
   beforeUpload(event: FileBeforeUploadEvent): void {
-    console.log('before')
     this.modal.open();
   }
 

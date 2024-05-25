@@ -23,6 +23,7 @@ import { BadgeModule } from 'primeng/badge';
 import { ModalUploadComponent } from './Components/modal-upload/modal-upload.component';
 import { LandPageComponent } from './Components/Home/land-page.component';
 import { SomeProductsGridComponent } from './Components/some-products-grid/some-products-grid.component';
+import {DialogModule} from "primeng/dialog"
 import { CarouselModule } from 'primeng/carousel';
 import { TagModule } from 'primeng/tag';
 import { PasswordModule } from 'primeng/password';
@@ -45,8 +46,10 @@ import { CarrinhoPageComponent } from './Components/carrinho-page/carrinho-page.
 import { PriceCheckerDirective } from './Diretives/price-checker/price-checker.directive';
 import {CookieService} from "ngx-cookie-service";
 import { CardTamplateComponent } from './Components/card-tamplate/card-tamplate.component'
+import { ModalWarningComponent } from './Components/modal-warning/modal-warning.component';
 @NgModule({
   declarations: [	
+    ModalWarningComponent,
     PriceCheckerDirective,
     AppComponent,
     ProjectSectionComponent,
@@ -87,6 +90,7 @@ import { CardTamplateComponent } from './Components/card-tamplate/card-tamplate.
     AppRoutingModule,
     FormsModule,
     SliderModule,
+    DialogModule,
     RadioButtonModule,
     ButtonModule,
     InputTextModule,

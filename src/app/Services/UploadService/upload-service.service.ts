@@ -9,7 +9,7 @@ import { axiosClient } from 'src/axios.client';
 export class UploadService {
  
   async hasProject(){
-    const project: Modelo3D = ( await axiosClient.get('/produtopersonalizado/getProjeto')).data
+    const project: Modelo3D = ( await axiosClient.get('/produtopersonalizado')).data
     return project
   }
 }

@@ -1,5 +1,5 @@
 <div class="h-100 w-100 d-flex align-items-center justify-content-center flex-column"  >
-    <h1>Login</h1>
+    <h1 class="text-secondary fst-italic">Login</h1>
     <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
         <span class="p-float-label mb-4 mt-5">
             <input pInputText class="input-group rounded p-3" id="usuario" name="usuario" type="text" ngModel required/>
@@ -18,3 +18,5 @@
         </div>
       </form>
 </div>
+
+<app-modal-warning [header]="'Falha no Login'" #modalwarning [body]="'Senha ou usúario incorreto!'" #warningModal></app-modal-warning>

@@ -16,12 +16,6 @@ export class PriceCheckerDirective {
 
   @HostListener('onChange', ['$event'])
   onDropdownChange(event: any) {
-    console.log('Seleção no dropdown alterada:', event);
-    
-    // Acessar o elemento pai
     const parentElement = this.el.nativeElement
-    console.log('Elemento pai:', parentElement);
-    
-    // Adicione aqui a lógica adicional que você deseja executar quando a seleção no dropdown mudar
   }
 }

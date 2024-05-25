@@ -8,7 +8,7 @@ import { Product } from 'src/app/Types/Product';
   templateUrl: './shopping-grid.component.html',
   styleUrls: ['./shopping-grid.component.css']
 })
-export class ShoppingGridComponent implements OnInit {
+export class ShoppingGridComponent  {
   constructor(private material: MaterialService) { }
   enable_material = this.material.materials
   products: Product[] = products
@@ -16,8 +16,5 @@ export class ShoppingGridComponent implements OnInit {
     id: undefined
   }
 
-  ngOnInit(): void {
-    console.log(this.enable_material)
-  }
 
 }

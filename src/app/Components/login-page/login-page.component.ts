@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormsModule, NgForm } from '@angular/forms';
-import { axiosClient } from 'src/axios.client';
 import { LoginService } from '../../Services/loginService/login.service';
+import { ModalWarningComponent } from '../modal-warning/modal-warning.component';
 
 @Component({
   selector: 'app-login-page',
@@ -10,6 +10,7 @@ import { LoginService } from '../../Services/loginService/login.service';
 })
 export class LoginPageComponent {
   login !: boolean
+  @ViewChild('modalwarning') modal !: ModalWarningComponent
   constructor(private loginService: LoginService) { }
   async onSubmit(formulario: NgForm) {
     if (!formulario.valid) {
@@ -19,6 +20,9 @@ export class LoginPageComponent {
       senha: formulario.controls['senha'].value,
       usuario: formulario.controls['usuario'].value
     })
+    .catch((err)=>
+      this.modal.open()
+  )
   }
   
 

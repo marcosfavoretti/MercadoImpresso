@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NovoUsuario } from '../../Types/novoUsuario';
 import { axiosClient } from 'src/axios.client';
+import { ModalWarningComponent } from '../modal-warning/modal-warning.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-usuario-page',
@@ -9,10 +11,15 @@ import { axiosClient } from 'src/axios.client';
   styleUrls: ['./cadastro-usuario-page.component.css']
 })
 export class CadastroUsuarioPageComponent {
+  @ViewChild('warningModal') modal !: ModalWarningComponent
+  erromsg : string = ''
+  constructor(private route: Router){
 
+  }
   async onSubmit(formulario: NgForm) {
     if(!formulario.valid){
-      console.log('formulario nao é valido')
+      this.erromsg = 'Tivemos problemas com o cadastro do usúario. Dados do Formulário inválidos!'
+      this.modal.open()
       return
     }
     await this.createUser({
@@ -28,8 +35,12 @@ export class CadastroUsuarioPageComponent {
   }
 
   async createUser(novoUsuario: NovoUsuario){
-    await axiosClient.post('/usuario/create',{
+    await axiosClient.post('/usuario',{
       ...novoUsuario
-    }).then(()=>console.log('criado'))
+    }).then(()=> this.route.navigate(['/home']))
+    .catch(()=>{
+      this.erromsg = 'Tivemos problemas com o cadastro do usúario. Por favor tente mais tarde!'
+      this.modal.open()
+    })
   }
 }

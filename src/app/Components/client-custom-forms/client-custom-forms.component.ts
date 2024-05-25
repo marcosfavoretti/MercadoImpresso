@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { colors } from './colors.list';
 import { FileStlHandleService } from '../../Services/file-stl-handle/file-stl-handle.service';
-import { Router } from '@angular/router';
-import { axiosClient } from 'src/axios.client';
 import { UploadService } from 'src/app/Services/UploadService/upload-service.service';
 import { Modelo3D } from 'src/app/Types/Modelo3d';
 import { MaterialService } from 'src/app/Services/MaterialService/material.service';
@@ -10,6 +8,7 @@ import { NgForm } from '@angular/forms';
 import { Customizacoes } from 'src/app/Types/Customizacoes';
 import { Material } from 'src/app/Types/Material';
 import { PriceCheckService } from 'src/app/Services/price-check/price-check.service';
+import { ModalWarningComponent } from '../modal-warning/modal-warning.component';
 
 @Component({
   selector: 'app-client-custom-forms',
@@ -18,6 +17,7 @@ import { PriceCheckService } from 'src/app/Services/price-check/price-check.serv
 })
 export class ClientCustomFormsComponent implements OnInit {
   // colors = colors
+  @ViewChild('warningModal') modal !: ModalWarningComponent
   
   file!: any
   selectColor?: Material
@@ -36,17 +36,13 @@ export class ClientCustomFormsComponent implements OnInit {
     private materialService: MaterialService,
     private pricechecker: PriceCheckService) { }
 
-  onSubmit(customForm: NgForm) {
-    if (!customForm.valid) {
-      console.log('formulario nao é valido')
-      return
-    }
-    console.log(customForm)
-  }
-
+ 
 
   async someChange(forms: NgForm){
-    if(!forms.controls['material'].value) return
+    if(!forms.controls['material'].value){
+      this.modal.open()
+      return
+    }
     this.isCalculating = true
     const newPrice = await this.pricechecker.checkCurrentPrice({
       camada : forms?.controls['slider-layer'].value,

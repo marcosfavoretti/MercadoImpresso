@@ -16,7 +16,12 @@ export const authGuardGuard: CanActivateFn = async (route, state) => {
 };
 
 async function hasAuth(): Promise<boolean>{//retorna true caso esteja autenticado e false caso nao esteja 
-  return  (!!(await inject(LoginService).getUserInfo()));
+  try{
+  return (!!(await inject(LoginService).getUserInfo()));
+  }
+  catch(err){
+    return false
+  }
 }
 
 function redirectLogin(router: Router){

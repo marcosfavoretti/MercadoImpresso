@@ -1,6 +1,6 @@
 <div style="margin-top: 20vh; min-height: 100%;" class="container">
     <div class="container px-4">
-        <h1>Criar Conta</h1>
+        <h1 class="fst-italic text-secondary">Criar Conta</h1>
         <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
             <div class="row">
                 <span class="p-float-label mt-4 col-md-6 col-12">
@@ -42,3 +42,5 @@
 
     </div>
 </div>
+
+<app-modal-warning [header]="'Falha em criar cadastro'" [body]="erromsg" #warningModal></app-modal-warning>

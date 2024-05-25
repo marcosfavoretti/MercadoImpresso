@@ -3,6 +3,7 @@ import { axiosClient } from 'src/axios.client';
 import { UserInfo } from './Object/User';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { configfile } from 'src/configfile';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,9 @@ export class LoginService {
   usuarioInfoevent: EventEmitter<UserInfo> = new EventEmitter<UserInfo>()
   usuarioInfo?: UserInfo
   logout(){
-     this.cookieService.delete('token' , '/', 'mercadoimpressoapi.azurewebsites.net')
+     this.cookieService.delete('token' , '/', configfile.sever)
     this.router.navigate(['home'])
-    console.log('logout')
+    console.log('logout ainda em processo para fazer logout tire o cookie "token" manualmente')
   }
   async auth({
     usuario,
@@ -24,7 +25,7 @@ export class LoginService {
     usuario: string,
     senha: string
   }) {
-    const token = (await axiosClient.post('/usuario/validate', {
+    const token = (await axiosClient.post('/usuario/login', {
       nome: usuario,
       senha: senha
     }, {
@@ -49,7 +50,7 @@ export class LoginService {
   }
 
   async getUserInfo() {
-    const userInfo = (await axiosClient.get('/usuario/userinfos')).data
+    const userInfo = (await axiosClient.get('/usuario')).data
     return userInfo
   }
 }

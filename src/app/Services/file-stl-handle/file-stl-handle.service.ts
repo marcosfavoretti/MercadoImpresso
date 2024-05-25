@@ -18,7 +18,6 @@ export class FileStlHandleService {
     this.emitEvent(this.fileSubmited, this.currentFile)
   }
   setCurrentColor(color: any) {
-    console.log(color)
     this.colorofFile = color
     this.emitEvent(this.fileChangeColor, color)
   }

@@ -17,7 +17,7 @@ export class ProjectSectionComponent implements OnInit {
     ){}
 
     async closeProject(){
-      await axiosClient.delete('/produtopersonalizado/deleteProjeto')
+      await axiosClient.delete('/produtopersonalizado')
       this.router.navigate(['/project-upload'])
     }
 }
